@@ -1,6 +1,7 @@
 $(document).ready(function() {
   // Getting references to the name input and author container, as well as the table body
   var nameInput = $("#hood-name");
+  var zipInput = $("#hood-zip")
   var hoodList = $("tbody");
   var hoodContainer = $(".hood-container");
   // Adding event listeners to the form to create a new object, and the button to delete
@@ -15,7 +16,7 @@ $(document).ready(function() {
   function handleHoodFormSubmit(event) {
     event.preventDefault();
     // Don't do anything if the name fields hasn't been filled out
-    if (!nameInput.val().trim().trim()) {
+    if (!nameInput.val().trim().trim() && !zipInput.val().trim().trim()) {
       return;
     }
     // Calling the upsertHood function and passing in the value of the name input
@@ -27,13 +28,13 @@ $(document).ready(function() {
   }
 
   // A function for creating a neighborhood. Calls getHood upon completion
-  function upsertHood(authorData) {
-    $.post("/api/hoods", authorData)
+  function upsertHood(hoodData) {
+    $.post("/api/hoods", hoodData)
       .then(getHoods);
   }
 
   // Function for creating a new list row for neighborhoods
-  function createHoodRow(authorData) {
+  function createHoodRow(hoodData) {
     var newTr = $("<tr>");
     newTr.data("hood", hoodData);
     newTr.append("<td>" + hoodData.name + "</td>");
