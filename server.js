@@ -26,14 +26,24 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Routes
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controller/controller.js");
+
+app.use(routes);
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/hood-api-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/hood-api-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({force:true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT http://localhost:" + PORT);
   });
