@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Hood.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
+    // Associating Hood with Posts
+    // When an Hood is deleted, also delete any associated Posts
     Hood.hasMany(models.Post, {
       onDelete: "cascade"
     });

@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  // Getting references to the name input and author container, as well as the table body
+  // Getting references to the name input and hood container, as well as the table body
   var nameInput = $("#hood-name");
   var zipInput = $("#hood-zip")
   var hoodList = $("tbody");
   var hoodContainer = $(".hood-container");
   // Adding event listeners to the form to create a new object, and the button to delete
-  // an Author
+  // a neighborhood
   $(document).on("submit", "#hood-form", handleHoodFormSubmit);
   $(document).on("click", ".delete-hood", handleDeleteButtonPress);
 
@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
   }
 
-  // Function for handling what to render when there are no authors
+  // Function for handling what to render when there are no neighborhoods
   function renderEmpty() {
     var alertDiv = $("<div>");
     alertDiv.addClass("alert alert-danger");
