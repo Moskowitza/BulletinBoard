@@ -1,8 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var Hood = sequelize.define("Hood", {
     // Giving the Neighborhood model a name of type STRING
-    name: DataTypes.STRING,
-    zipCode: DataType.Number
+    name:{
+      type: DataTypes.STRING
+    },
+    zipcode: 
+    {
+      type: DataTypes.INTEGER
+    }  
   });
 
   Hood.associate = function(models) {
