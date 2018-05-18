@@ -1,12 +1,9 @@
 /* GLOBAL STYLES */
 
-body {
-  background: red;
-}
 
 /* HEADER STYLES */
 header {
-  background: slategray url(images/header-3.jpg) top no-repeat;
+  background: slategray;
   color: white;
   height: 200px;
   margin: 0;
