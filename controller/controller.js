@@ -16,11 +16,11 @@ var db = require("../models");
 router.get("/", function(req, res) {
   // NG - changed Post to Hood testing accessing neighborhood table
   db.Hood.findAll({}).then(function(data) {
-    var hbsObject = {
-      neighborhoods: data
-    };
-    console.log(hbsObject.neighborhoods[0].dataValues.name);
-    res.render("index", hbsObject);
+    // var hbsObject = {
+    //   neighborhoods: data
+    // };
+    console.log("path: "+hbsObject.neighborhoods[0].dataValues.name);
+    res.render("index", {neighborhoods:data.name});
   });
 });
 
