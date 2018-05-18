@@ -1,26 +1,17 @@
-<h1>Cats!</h1>
+<h1>!</h1>
 
-<h2>Cats that are not sleepy!</h2>
+<h2>The Owls are Not What they Seem</h2>
 
 <ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
+  {{#each posts}}
+
+      {{> posts/post-block}}
+
   {{/each}}
 </ul>
 
-<h2>Cats that are sleepy!</h2>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
+{{!-- <h2>Add a Cat</h2>
 <form class="create-form">
 
   <div class="form-group">
@@ -35,4 +26,4 @@
   </div>
 
   <button type="submit">Add Cat</button>
-</form>
+</form> --}}
