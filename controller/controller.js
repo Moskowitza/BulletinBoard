@@ -17,32 +17,31 @@ router.get("/", function(req, res) {
 });
 
 router.post("../api/models/post", function(req, res) {
-  db.Post.create([
-    "title", "body"
-  ], [
-    req.body.title, req.body.body
-  ], function(result) {
+  db.Post.create({
+    title: req.body.title,
+    body: req.body.body}
+  ).then(function(title) {
     // Send back the ID of the new quote
-    res.json({ id: result.insertId });
+    console.log(title);
   });
 });
 
-router.put("/api/models/post/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+// router.put("/api/models/post/:id", function(req, res) {
+//   var condition = "id = " + req.params.id;
 
-  console.log("condition", condition);
+//   console.log("condition", condition);
 
-  db.Post.update({
-    rank: req.body.rank
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
+//   db.Post.update({
+//     rank: req.body.rank
+//   }, condition, function(result) {
+//     if (result.changedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
 
 
 
