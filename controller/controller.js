@@ -6,10 +6,10 @@ var router = express.Router();
 var db = require("../models");
 
 // create an association between tables
-const Post = this.sequelize.define('posts');
-const Neighborhood  = this.sequelize.define('neighborhoods');
+// const Post = this.sequelize.define('posts');
+// const Neighborhood  = this.sequelize.define('neighborhoods');
 
-Post.belongsTo(Neighborhood); 
+// Post.belongsTo(Neighborhood); 
 // Will add a neighborhoodID attribute to Player to hold the primary key value for Team
 
 // Create all our routes and set up logic within those routes where required.

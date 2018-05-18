@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   Post.associate = function(models) {
     // We're saying that a Post should belong to an Hood
     // A Post can't be created without an Hood due to the foreign key constraint
-    Post.belongsTo(models.Hood, {
+    Post.belongsTo(Hood, {
       foreignKey: {
         allowNull: false
       }
