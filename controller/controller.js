@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("../api/models/post", function(req, res) {
+router.post("post/create", function(req, res) {
   db.Post.create({
     title: req.body.title,
     body: req.body.body}
