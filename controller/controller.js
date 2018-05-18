@@ -14,11 +14,11 @@ Post.belongsTo(Neighborhood); // Will add a neighborhoodID attribute to Player t
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   // NG - changed Post to Hood testing accessing neighborhood table
-  db.Post.findAll({}).then(function(data) {
+  db.Hood.findAll({}).then(function(data) {
     var hbsObject = {
-      Post: data
+      neighborhoods: data
     };
-    console.log(hbsObject);
+    console.log(hbsObject.neighborhoods[0].dataValues.name);
     res.render("index", hbsObject);
   });
 });
