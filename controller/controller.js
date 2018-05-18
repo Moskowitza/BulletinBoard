@@ -16,13 +16,16 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("../api/models/post", function(req, res) {
+router.post("/api/new", function(req, res) {
+  console.log("new post");
+  console.log(req.body);
+
   db.Post.create({
     title:req.body.title, 
     body: req.body.body, 
     rank: req.body.rank}).then(function(result) {
     // Send back the ID of the new quote
-    res.json({result});
+    res.end();
   });
 });
 
