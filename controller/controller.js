@@ -3,11 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (post.js) to use its database functions.
-<<<<<<< HEAD
-var post = require("../models/")["Post"];
-=======
 var db = require("../models");
->>>>>>> cb600161a35e22a78ad04817755b0613c0120acd
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
