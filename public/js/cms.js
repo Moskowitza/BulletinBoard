@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  // Getting jQuery references to the post body, title, form, and author select
+  // Getting jQuery references to the post body, title, form, and hood select
   var bodyInput = $("#body");
   var titleInput = $("#title");
   var cmsForm = $("#cms");
-  var authorSelect = $("#hood");
+  var hoodSelect = $("#hood");
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", handleFormSubmit);
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
@@ -63,26 +63,26 @@ $(document).ready(function() {
     });
   }
 
-  // Gets post data for the current post if we're editing, or if we're adding to an author's existing posts
+  // Gets post data for the current post if we're editing, or if we're adding to an hood's existing posts
   function getPostData(id, type) {
     var queryUrl;
     switch (type) {
     case "post":
       queryUrl = "/api/posts/" + id;
       break;
-    case "author":
-      queryUrl = "/api/authors/" + id;
+    case "hood":
+      queryUrl = "/api/hoods/" + id;
       break;
     default:
       return;
     }
     $.get(queryUrl, function(data) {
       if (data) {
-        console.log(data.AuthorId || data.id);
+        console.log(data.hoodId || data.id);
         // If this post exists, prefill our cms forms with its data
         titleInput.val(data.title);
         bodyInput.val(data.body);
-        authorId = data.AuthorId || data.id;
+        hoodId = data.HoodId || data.id;
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
@@ -90,33 +90,33 @@ $(document).ready(function() {
     });
   }
 
-  // A function to get Authors and then render our list of Authors
-  function getAuthors() {
-    $.get("/api/authors", renderAuthorList);
+  // A function to get hoods and then render our list of hoods
+  function getHoods() {
+    $.get("/api/hoods", renderHoodList);
   }
-  // Function to either render a list of authors, or if there are none, direct the user to the page
-  // to create an author first
-  function renderAuthorList(data) {
+  // Function to either render a list of hoods, or if there are none, direct the user to the page
+  // to create an hood first
+  function renderHoodList(data) {
     if (!data.length) {
-      window.location.href = "/authors";
+      window.location.href = "/hoods";
     }
     $(".hidden").removeClass("hidden");
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
-      rowsToAdd.push(createAuthorRow(data[i]));
+      rowsToAdd.push(createHoodRow(data[i]));
     }
-    authorSelect.empty();
+    hoodSelect.empty();
     console.log(rowsToAdd);
-    console.log(authorSelect);
-    authorSelect.append(rowsToAdd);
-    authorSelect.val(authorId);
+    console.log(hoodSelect);
+    hoodSelect.append(rowsToAdd);
+    hoodSelect.val(hoodId);
   }
 
-  // Creates the author options in the dropdown
-  function createAuthorRow(author) {
+  // Creates the hood options in the dropdown
+  function createHoodRow(hood) {
     var listOption = $("<option>");
-    listOption.attr("value", author.id);
-    listOption.text(author.name);
+    listOption.attr("value", hood.id);
+    listOption.text(hood.name);
     return listOption;
   }
 
