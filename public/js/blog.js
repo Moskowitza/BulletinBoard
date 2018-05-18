@@ -13,7 +13,7 @@ $(document).ready(function() {
   // The code below handles the case where we want to get blog posts for a specific neighbohood
   // Looks for a query param in the url for hood_id
   var url = window.location.search;
-  var authorId;
+  var hoodId;
   if (url.indexOf("?hood_id=") !== -1) {
     hoodId = url.split("=")[1];
     getPosts(hoodId);

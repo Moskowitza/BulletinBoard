@@ -3,11 +3,15 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (post.js) to use its database functions.
+<<<<<<< HEAD
 var post = require("../models/")["Post"];
+=======
+var db = require("../models");
+>>>>>>> cb600161a35e22a78ad04817755b0613c0120acd
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  post.all(function(data) {
+  db.Post.findAll({}).then(function(data) {
     var hbsObject = {
       post: data
     };
@@ -17,7 +21,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("../api/models/post", function(req, res) {
-  post.create([
+  db.Post.create([
     "title", "body"
   ], [
     req.body.title, req.body.body
@@ -32,7 +36,7 @@ router.put("/api/models/post/:id", function(req, res) {
 
   console.log("condition", condition);
 
-  post.update({
+  db.Post.update({
     rank: req.body.rank
   }, condition, function(result) {
     if (result.changedRows == 0) {
