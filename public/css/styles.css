@@ -1,47 +1,57 @@
-button.submit {
-  float: right;
+/* GLOBAL STYLES */
+
+body {
+  background: red;
 }
 
-form#cms {
-  margin-top: 50px;
+/* HEADER STYLES */
+header {
+  background: slategray url(images/header-3.jpg) top no-repeat;
+  color: white;
+  height: 200px;
+  margin: 0;
+}
+.view-button-right {
+  background: lightgray;
+}
+.view-button-left {
+  background: rgb(182, 181, 181);
 }
 
-#cms textarea {
-  resize: none;
+
+/* MAIN CONTENT STYLES */
+/* Flexbox list for hoods */
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* Sets flex items to three equal columns */
+li {
+  width: calc(100% / 3);
 }
 
-.card-header button.delete,
-button.edit {
-  float: right;
-  margin: 5px;
+
+/* FOOTER STYLES */
+footer {
+  background: slategray;
+  color: white;
+  height: 100px;
+  margin: 0;
+}
+footer a {
+  color: white;
+  text-decoration: underline;
+}
+/* Flexbox Sticky Footer */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+
 }
 
-.hood-container {
-  margin-top: 50px;
-}
 
-.hood-list {
-  margin-top: 25px;
-}
-
-.blog-container {
-  margin-top: 30px;
-}
-
-.blog {
-  margin-top: 30px;
-}
-
-.hidden {
-  display: none;
-}
-
-#hood-name {
-  width: 100%;
-  height: 35px;
-  margin-top: 5px;
-}
-
-.top-30 {
-  margin-top: 30px;
-}
