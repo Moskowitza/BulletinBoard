@@ -3,6 +3,7 @@
 <input id="title" type="text" name="title" placeholder="title">
 <input id="body" type="text" name="body" placeholder="body">
 <input id="rank" type="text" name="rank" placeholder="rank">
+<input id="hoodID" type="text" name="hoodID" placeholder="hoodID (1-5)">
 <button class="submitButton" type="submit" name="button">SUBMIT</button>
 </form>
 {{!-- This script needs to be referenced in the Main Handlebars at some point when this is all worked out --}}
@@ -14,6 +15,7 @@ $(".submitButton").on("click", function(event){
     title: $("#title").val().trim(),
     body: $("#body").val().trim(),
     rank: $("#rank").val().trim(),
+    hoodID: $("#hoodID").val().trim(),
   };
   console.log(newPost)
 
