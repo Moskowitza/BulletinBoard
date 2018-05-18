@@ -44,6 +44,36 @@ app.use(routes);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({force:true}).then(function() {
+  db.Hood.bulkCreate([{
+    name: "Fishtown",
+    lat: 39.972095,
+    lng: -75.129644
+  },
+{
+  name: "Old City",
+  lat: 39.952482,
+  lng: -75.143034
+},
+{
+  name: "Graduate Hospital",
+  lat: 39.942489,
+  lng: -75.173461
+},
+{
+  name: "Society Hill",
+  lat: 39.943731,
+  lng: -75.147841
+},
+{
+  name: "Powelton Village",
+  lat: 39.962055,
+  lng: -75.192044
+},
+{
+  name: "Fairmount",
+  lat: 39.968239,
+  lng: -75.169685
+}])
   app.listen(PORT, function() {
     console.log("App listening on PORT http://localhost:" + PORT);
   });
