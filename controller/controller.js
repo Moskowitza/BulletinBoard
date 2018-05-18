@@ -7,12 +7,13 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
+  // NG - changed Post to Hood testing accessing neighborhood table
   db.Post.findAll({}).then(function(data) {
     var hbsObject = {
-      post: data
+      Post: data
     };
     console.log(hbsObject);
-    res.render("newpost", hbsObject);
+    res.render("index", hbsObject);
   });
 });
 

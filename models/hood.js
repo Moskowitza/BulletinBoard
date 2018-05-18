@@ -4,10 +4,13 @@ module.exports = function(sequelize, DataTypes) {
     name:{
       type: DataTypes.STRING
     },
-    zipcode: 
+    lat: 
     {
-      type: DataTypes.INTEGER
-    }  
+      type: DataTypes.DECIMAL
+    },
+    lng: {
+      type: DataTypes.DECIMAL
+    } 
   });
 
   Hood.associate = function(models) {
