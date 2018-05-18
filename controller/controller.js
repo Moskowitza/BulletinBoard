@@ -6,10 +6,11 @@ var router = express.Router();
 var db = require("../models");
 
 // create an association between tables
-const Post = this.sequelize.define('post', {/* attributes */});
-const Neighborhood  = this.sequelize.define('neighborhood', {/* attributes */});
+// const Post = this.sequelize.define('posts');
+// const Neighborhood  = this.sequelize.define('neighborhoods');
 
-Post.belongsTo(Neighborhood); // Will add a neighborhoodID attribute to Player to hold the primary key value for Team
+// Post.belongsTo(Neighborhood); 
+// Will add a neighborhoodID attribute to Player to hold the primary key value for Team
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
@@ -18,7 +19,8 @@ router.get("/", function(req, res) {
     var hbsObject = {
       neighborhoods: data
     };
-    console.log(hbsObject.neighborhoods[0].dataValues.name);
+    // console.log("D A T A " +data)
+    // console.log("path: "+hbsObject.neighborhoods[0].dataValues.name);
     res.render("index", hbsObject);
   });
 });
@@ -30,7 +32,9 @@ router.post("/api/new", function(req, res) {
   db.Post.create({
     title:req.body.title, 
     body: req.body.body, 
-    rank: req.body.rank}).then(function(result) {
+    rank: req.body.rank,
+    hoodID: req.body.hoodID
+  }).then(function(result) {
     // Send back the ID of the new quote
     res.end();
   });
