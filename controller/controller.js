@@ -33,7 +33,7 @@ router.get("/newpost/:id", function (req, res) {
     rank: req.body.rank,
     hoodID: req.param.id
   }).then(
-    
+
   )
   res.render("newpost");
   });
