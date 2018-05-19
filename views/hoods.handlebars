@@ -3,7 +3,15 @@
         <div class="row">
             <div class="col s12">
                 {{!-- Header should be whichever neighborhood was clicked --}}
-                <h1>{{this.neighborhood}}</h1>
+
+                <ul>
+                    {{#each neighborhoods}}
+                    <li>
+                        <a href="/hoods" data-id="{{this.id}}">{{this.name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+
             </div>
         </div>
 
@@ -41,6 +49,29 @@
             </div>
         </div>
     </div>
+
+    {{!-- This button triggers more buttons for adding a post or selecting a new neighborhood --}}
+    <div class="fixed-action-btn">
+        <a href="#" class="btn-floating btn-large z-depth-5">
+            <i class="large material-icons">more_vert</i>
+        </a>
+        <ul>
+            {{!-- This button will trigger a modal for new posts --}}
+            <li class="modal-6-trigger">
+                <a href="#modal-6" class="btn-floating btn-floating-1 btn-large z-depth-5">
+                    POST {{!-- Can add icon like below --}} {{!--
+                    <i class="large material-icons">mood</i> --}}
+                </a>
+            </li>
+            {{!-- This button will trigger a modal for selecting a new neighborhood --}} {{!--
+            <li class="modal-7-trigger">
+                <a href="#modal-7" class="btn-floating btn-floating-2 btn-large z-depth-5">
+                    <i class="large material-icons">local_dining</i>
+                </a>
+            </li> --}}
+        </ul>
+    </div>
+
 </main>
 
 <footer class="center-align valign-wrapper">

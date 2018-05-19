@@ -41,6 +41,7 @@ router.post("/api/new", function (req, res) {
   });
 });
 
+
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
@@ -55,6 +56,24 @@ router.get("/hoods/:id", function (req, res) {
   };
   res.render("hoods", hbsHood);
 });
+
+// //path to get neighborhood page
+// router.get("/api/hoods/:id", function (req, res) {
+//   // query the database for hood where the ID matches
+//   db.Hood.findOne({
+//     where: {
+//       id: req.params.id
+//     },
+//     include: [db.Post]
+//   }).then(function (dbHood) {
+//     var hbsHood = {
+//       neighborhoods: data
+//     };
+//     //     res.json(hbsHood);
+//     //     res.sendFile("hoods.handlebars");
+//     res.render("hoods", hbsObject);
+//   });
+// });
 
 
 
