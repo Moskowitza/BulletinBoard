@@ -25,6 +25,16 @@ router.get("/", function (req, res) {
   });
 });
 
+router.get("/newpost", function (req, res) {
+  // NG - changed Post to Hood testing accessing neighborhood table
+  db.Hood.findAll({}).then(function (data) {
+    var hbsObject = {
+      neighborhoods: data
+    };
+    res.render("newpost", hbsObject);
+  });
+});
+
 //This Path is for adding new to the Post Table (this works)
 router.post("/api/new", function (req, res) {
   console.log("new post");
