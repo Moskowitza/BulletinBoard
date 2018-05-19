@@ -5,6 +5,7 @@ $(".submitButton").on("click", function(event){
     title: $("#title").val().trim(),
     body: $("body").val().trim(),
     rank: $("rank").val().trim(),
+    HoodID: $("#hoodID").val()
   };
   console.log(newPost)
 

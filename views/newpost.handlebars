@@ -20,8 +20,17 @@
           <input id="title" type="text" name="title" placeholder="title">
           <input id="body" type="text" name="body" placeholder="body">
           <input id="rank" type="text" name="rank" placeholder="rank">
-          <input id="hoodID" type="text" name="hoodID" placeholder="hoodID (1-5)">
-          <button class="btn submitButton" type="submit" name="button">SUBMIT</button>
+          <div class="input-field">
+            <select>
+              
+              <option value="" disabled selected>Select Your Neighborhood</option>
+              {{#each neighborhoods}}
+              <option id="hoodID" value="{{this.id}}">{{this.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          
+          <button class="btn submitButton" type="submit" name="button">Submit</button>
         </form>
       </div>
     </div>
@@ -69,7 +78,10 @@
 
 
 <script>
-
+  $(document).ready(function() {
+    $('select').material_select();
+  })
+  
   $(".submitButton").on("click", function (event) {
     event.preventDefault();
     console.log("button click")
