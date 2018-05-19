@@ -42,8 +42,10 @@ router.post("/api/new", function (req, res) {
 });
 
 
+
 //path to get neighborhood page
-router.get("/hoods", function (req, res) {
+router.get("/hoods/:id", function (req, res) {
+ 
   // query the database for hood where the ID matches
   db.Hood.findOne({
     where: {
@@ -54,6 +56,7 @@ router.get("/hoods", function (req, res) {
     var hbsHood = {
       neighborhoods: data
     }
+    console.log("SELECTED hbsHood is: "+hbsHood);
     res.render("hoods", hbsHood);
   });
 });
