@@ -4,6 +4,9 @@
             <div class="col s12">
                 {{!-- Header should be whichever neighborhood was clicked --}}
                 <h1>{{this.neighborhood}}</h1>
+                                    {{#each neighborhoods}}
+                    <li><a href="/hoods" data-id="{{this.id}}">{{this.name}}</a></li>
+                    {{/each}}
             </div>
         </div>
 
