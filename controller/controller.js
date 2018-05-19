@@ -25,7 +25,7 @@ router.get("/", function (req, res) {
   });
 });
 
-router.get("/newpost", function (req, res) {
+router.get("/newpost/:id", function (req, res) {
   // NG - changed Post to Hood testing accessing neighborhood table
   db.Post.create({
     title: req.body.title,
