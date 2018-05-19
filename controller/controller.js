@@ -19,8 +19,6 @@ router.get("/", function(req, res) {
     var hbsObject = {
       neighborhoods: data
     };
-    // console.log("D A T A " +data)
-    // console.log("path: "+hbsObject.neighborhoods[0].dataValues.name);
     res.render("index", hbsObject);
   });
 });
