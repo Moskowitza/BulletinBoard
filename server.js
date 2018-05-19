@@ -44,6 +44,12 @@ app.use(routes);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({force:true}).then(function() {
+  db.Post.bulkCreate([{
+    title: "New Posting",
+    body: "Welcome to Fishtown",
+    rank: 1,
+    HoodID: 1
+  }]);
   db.Hood.bulkCreate([{
     name: "Fishtown",
     lat: 39.972095,
