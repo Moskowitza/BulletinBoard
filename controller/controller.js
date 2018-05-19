@@ -14,7 +14,7 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  // NG - changed Post to Hood testing accessing neighborhood table
+// NG - changed Post to Hood testing accessing neighborhood table
   db.Hood.findAll({}).then(function(data) {
     var hbsObject = {
       neighborhoods: data
@@ -23,6 +23,7 @@ router.get("/", function(req, res) {
   });
 });
 
+//This Path is for adding new to the Post Table
 router.post("/api/new", function(req, res) {
   console.log("new post");
   console.log(req.body);
@@ -37,6 +38,22 @@ router.post("/api/new", function(req, res) {
     res.end();
   });
 });
+//path to get neighborhood page
+app.get("/neighborhood/:id", function(req, res) {
+db.Hood.findOne({
+  where:{
+    id: req.params.id
+  },
+  include: [db.Post]
+}).then(function(dbHood){
+  res.json(dbAuthor);
+});
+});
+
+
+
+
+
 
 // router.put("/api/models/post/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
