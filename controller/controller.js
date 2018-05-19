@@ -41,23 +41,33 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-//path to get neighborhood page
-router.get("/api/hoods/:id", function (req, res) {
-  // query the database for hood where the ID matches
-  db.Hood.findOne({
-    where: {
-      id: req.params.id
-    },
-    include: [db.Post]
-  }).then(function (dbHood) {
-    var hbsHood = {
+// NG - added temp get route to test form modal
+router.get("/hoods", function(recm, res) {
+  db.Hood.findAll({}).then(function (data) {
+    var hbsObject = {
       neighborhoods: data
     };
-    //     res.json(hbsHood);
-    //     res.sendFile("hoods.handlebars");
     res.render("hoods", hbsObject);
   });
 });
+
+// //path to get neighborhood page
+// router.get("/api/hoods/:id", function (req, res) {
+//   // query the database for hood where the ID matches
+//   db.Hood.findOne({
+//     where: {
+//       id: req.params.id
+//     },
+//     include: [db.Post]
+//   }).then(function (dbHood) {
+//     var hbsHood = {
+//       neighborhoods: data
+//     };
+//     //     res.json(hbsHood);
+//     //     res.sendFile("hoods.handlebars");
+//     res.render("hoods", hbsObject);
+//   });
+// });
 
 
 
