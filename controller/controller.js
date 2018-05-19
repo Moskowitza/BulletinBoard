@@ -41,14 +41,6 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-// NG - added temp get route to test form modal
-router.get("/hoods", function(recm, res) {
-  db.Hood.findAll({}).then(function (data) {
-    var hbsObject = {
-      neighborhoods: data
-    };
-    res.render("hoods", hbsObject);
-  });
 });
 
 // //path to get neighborhood page
@@ -68,6 +60,7 @@ router.get("/hoods", function(recm, res) {
 //     res.render("hoods", hbsObject);
 //   });
 // });
+
 
 
 
