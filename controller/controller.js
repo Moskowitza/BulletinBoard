@@ -42,63 +42,65 @@ router.post("/api/new", function (req, res) {
 });
 
 
+
 //path to get neighborhood page
-router.get("/hoods", function (req, res) {
+router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
-//   db.Hood.findOne({
-//     where: {
-//       id: req.params.id
-//     },
-//     include: [db.Post]
-// }).then(function (data) {
-//   var hbsHood = {
-//     neighborhoods: data
-//   };
-  res.render("hoods");
+  db.Hood.findOne({
+    where: {
+      id: req.params.id
+    },
+    // include: [db.Post]
+  }).then(function (data) {
+    // var hbsHood = {
+    //   neighborhoods: data
+    // }
+    console.log("SELECTED hbsHood is: "+data);
+    res.render("hoods", data);
+  });
 });
-
-// //path to get neighborhood page
-// router.get("/api/hoods/:id", function (req, res) {
-//   // query the database for hood where the ID matches
-//   db.Hood.findOne({
-//     where: {
-//       id: req.params.id
-//     },
-//     include: [db.Post]
-//   }).then(function (dbHood) {
-//     var hbsHood = {
-//       neighborhoods: data
-//     };
-//     //     res.json(hbsHood);
-//     //     res.sendFile("hoods.handlebars");
-//     res.render("hoods", hbsObject);
-//   });
-// });
-
+  // //path to get neighborhood page
+  // router.get("/api/hoods/:id", function (req, res) {
+  //   // query the database for hood where the ID matches
+  //   db.Hood.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     include: [db.Post]
+  //   }).then(function (dbHood) {
+  //     var hbsHood = {
+  //       neighborhoods: data
+  //     };
+  //     //     res.json(hbsHood);
+  //     //     res.sendFile("hoods.handlebars");
+  //     res.render("hoods", hbsObject);
+  //   });
+  // });
 
 
 
 
 
 
-// router.put("/api/models/post/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
 
-//   console.log("condition", condition);
+  // router.put("/api/models/post/:id", function(req, res) {
+  //   var condition = "id = " + req.params.id;
 
-//   db.Post.update({
-//     rank: req.body.rank
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  //   console.log("condition", condition);
+
+  //   db.Post.update({
+  //     rank: req.body.rank
+  //   }, condition, function(result) {
+  //     if (result.changedRows == 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     } else {
+  //       res.status(200).end();
+  //     }
+  //   });
+  // });
 
 
 
-// Export routes for server.js to use.
-module.exports = router;
+  // Export routes for server.js to use.
+  module.exports = router;
