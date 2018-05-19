@@ -20,12 +20,13 @@
           <input id="title" type="text" name="title" placeholder="title">
           <input id="body" type="text" name="body" placeholder="body">
           <input id="rank" type="text" name="rank" placeholder="rank">
+
           <div class="input-field">
             <select>
               
               <option value="" disabled selected>Select Your Neighborhood</option>
               {{#each neighborhoods}}
-              <option id="hoodID" value="{{this.id}}">{{this.name}}</option>
+              <option id="hoodID" value="{{this.id}}">{{this.name}} {{this.id}}</option>
               {{/each}}
             </select>
           </div>
@@ -70,32 +71,3 @@
     </div>
   </div>
 </footer>
-
-
-
-
-{{!-- This script needs to be referenced in the Main Handlebars at some point when this is all worked out --}}
-
-
-<script>
-  $(document).ready(function() {
-    $('select').material_select();
-  })
-  
-  $(".submitButton").on("click", function (event) {
-    event.preventDefault();
-    console.log("button click")
-    var newPost = {
-      title: $("#title").val().trim(),
-      body: $("#body").val().trim(),
-      rank: $("#rank").val().trim(),
-      hoodID: $("#hoodID").val().trim(),
-    };
-    console.log(newPost)
-
-    $.post("/api/new", newPost)
-      .then(function () {
-        console.log("posted?")
-      });
-  });
-</script>
