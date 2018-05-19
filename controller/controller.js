@@ -41,22 +41,22 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-
-
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
+  console.log("R E Q Params ID" +req.params.id)
   db.Hood.findOne({
     where: {
       id: req.params.id
     },
     // include: [db.Post]
   }).then(function (data) {
-    // var hbsHood = {
-    //   neighborhoods: data
-    // }
-    console.log("SELECTED hbsHood is: "+data);
-    res.render("hoods", data);
+    console.log("D A T A: "+data)
+    var hbsHood = {
+      neighborhoods: data
+    }
+    console.log("SELECTED hbsHood is: "+hbsHood);
+    res.render("hoods", hbsHood);
   });
 });
   // //path to get neighborhood page
