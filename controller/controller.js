@@ -45,19 +45,18 @@ router.post("/api/new", function (req, res) {
 
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {
- 
   // query the database for hood where the ID matches
   db.Hood.findOne({
     where: {
       id: req.params.id
     },
-    include: [db.Post]
+    // include: [db.Post]
   }).then(function (data) {
-    var hbsHood = {
-      neighborhoods: data
-    }
-    console.log("SELECTED hbsHood is: "+hbsHood);
-    res.render("hoods", hbsHood);
+    // var hbsHood = {
+    //   neighborhoods: data
+    // }
+    console.log("SELECTED hbsHood is: "+data);
+    res.render("hoods", data);
   });
 });
   // //path to get neighborhood page
