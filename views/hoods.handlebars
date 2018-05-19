@@ -39,7 +39,7 @@
                 {{!-- List for posts that will populate from database --}}
                 <ul>
                     {{#each posts}}
-                    <li></li>
+                    <li>{{this.title}}</li>
                     {{/each}}
                 </ul>
 
@@ -55,7 +55,7 @@
         <ul>
             {{!-- This button will trigger a modal for new posts --}}
             <li class="">
-                <a href="/newpost" class="btn-floating btn-floating-1 btn-large z-depth-5">
+                <a href="/newpost/{{neighborhoods.id}}" class="btn-floating btn-floating-1 btn-large z-depth-5">
                     POST {{!-- Can add icon like below --}} {{!--
                     <i class="large material-icons">mood</i> --}}
                 </a>
