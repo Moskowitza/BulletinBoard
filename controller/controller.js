@@ -42,21 +42,18 @@ router.post("/api/new", function (req, res) {
 });
 
 //path to get neighborhood page
-router.get("/hoods", function (req, res) {
+router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
-  // db.Hood.findOne({
-  //   where: {
-  //     id: req.params.id
-  //   },
-  //   include: [db.Post]
-// }).then(function (res) {
-//   var hbsHood = {
-//     neighborhoods: data
-//   };
-//   //     res.json(hbsHood);
-//   //     res.sendFile("hoods.handlebars");
-
-  res.render("hoods");
+  db.Hood.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [db.Post]
+}).then(function (data) {
+  var hbsHood = {
+    neighborhoods: data
+  };
+  res.render("hoods", hbsHood);
 });
 
 
