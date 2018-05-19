@@ -32,27 +32,33 @@ router.get("/newpost/:id", function (req, res) {
     body: req.body.body,
     rank: req.body.rank,
     hoodID: req.param.id
-  }).then(function (dbPost) {
-    console.log(res.json(dbPost));
+  }).then(function (postdb) {
+    Hood.create().then(function(postdb){
+      Post.setHood(hood)
+    })
    });
   res.render("newpost");
 });
+////SEThOOD
+
+
+
 
 //This Path is for adding new to the Post Table (this works)
-router.post("/api/new", function (req, res) {
-  console.log("new post");
-  console.log(req.body);
+// router.post("/api/new", function (req, res) {
+//   console.log("new post");
+//   console.log(req.body);
 
-  db.Post.create({
-    title: req.body.title,
-    body: req.body.body,
-    rank: req.body.rank,
-    hoodID: req.body.hoodID
-  }).then(function (result) {
-    // Send back the ID of the new Post
-    res.end();
-  });
-});
+//   db.Post.create({
+//     title: req.body.title,
+//     body: req.body.body,
+//     rank: req.body.rank,
+//     hoodID: req.body.hoodID
+//   }).then(function (result) {
+//     // Send back the ID of the new Post
+//     res.end();
+//   });
+// });
 
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {

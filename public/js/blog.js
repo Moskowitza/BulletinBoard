@@ -10,11 +10,10 @@ $(".submitButton").on("click", function(event){
     title: $("#title").val().trim(),
     body: $("#body").val().trim(),
     rank: $("#rank").val().trim(),
-    HoodID: $("#hoodID").val()
   };
   console.log(newPost)
 
-  $.post("/api/new", newPost)
+  $.post("/api/newpost/:id", newPost)
   .then(function(){
     console.log("posted?")
   });
