@@ -27,12 +27,15 @@ router.get("/", function (req, res) {
 
 router.get("/newpost", function (req, res) {
   // NG - changed Post to Hood testing accessing neighborhood table
-  db.Hood.findAll({}).then(function (data) {
-    var hbsObject = {
-      neighborhoods: data
-    };
-    res.render("newpost", hbsObject);
-  });
+  db.Post.create({
+    title: req.body.title,
+    body: req.body.body,
+    rank: req.body.rank,
+    hoodID: req.param.id
+  }).then(function (dbPost) {
+    console.log(res.json(dbPost));
+   });
+  res.render("newpost");
 });
 
 //This Path is for adding new to the Post Table (this works)
