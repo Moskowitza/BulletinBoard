@@ -20,7 +20,8 @@ var db = require("../models");
 //1) GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
   // NG - changed Post to Hood testing accessing neighborhood table
-  db.Hood.findAll({}).then(function (data) {
+  db.Hood.findAll({
+  }).then(function (data) {
     var hbsObject = {
       neighborhoods: data
     };
@@ -59,14 +60,14 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-//path to get neighborhood page
+//path to get neighborhood page and Include Name in the header
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
   console.log("R E Q Params ID" + req.params.id)
   db.Hood.findOne({
     where: {
-      id: req.params.id
-    },
+      id: req.params.id,
+    }
     // include: [db.Post]
   }).then(function (data) {
     console.log("D A T A: " + data)
@@ -77,6 +78,24 @@ router.get("/hoods/:id", function (req, res) {
     res.render("hoods", hbsHood);
   });
 });
+
+//path to get Posts
+router.get("/hoods/:id", function(req, res) {
+  var query = {};
+  if (req.query.HoodID) {
+    query.HoodId = req.query.HoodID;
+  }
+  // Here we add an "include" property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Author
+  db.Post.findAll({
+    where: query,
+    include: [db.Hood]
+  }).then(function(dbPost) {
+    res.json(dbPost);
+  });
+});
+
 // //path to get neighborhood page
 // router.get("/api/hoods/:id", function (req, res) {
 //   // query the database for hood where the ID matches

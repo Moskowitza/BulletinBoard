@@ -39,7 +39,7 @@
                 {{!-- List for posts that will populate from database --}}
                 <ul>
                     {{#each posts}}
-                    <li>{{this.title}}</li>
+                    {{>posts/post-block}}
                     {{/each}}
                 </ul>
 
