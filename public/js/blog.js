@@ -10,7 +10,8 @@ $(".submitButton").on("click", function(event){
     title: $("#title").val().trim(),
     body: $("#body").val().trim(),
     rank: $("#rank").val().trim(),
-    HoodID: $("#hoodID").val()
+    // What goes here?
+    HoodID: $("#neighborhood").val()
   };
   console.log(newPost)
 
