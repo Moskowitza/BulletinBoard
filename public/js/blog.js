@@ -10,7 +10,8 @@ $(".submitButton").on("click", function(event){
     title: $("#title").val().trim(),
     body: $("#body").val().trim(),
     rank: $("#rank").val().trim(),
-    HoodID: $("#hoodID").val()
+    // $("#neighborhood").val() works!!!! but still need to write to database
+    HoodID: $("#neighborhood").val()
   };
   console.log(newPost)
 

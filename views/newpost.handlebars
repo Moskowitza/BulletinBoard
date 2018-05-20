@@ -4,6 +4,7 @@
       <div class="col s12">
         {{!-- Header should be whichever neighborhood was clicked --}}
         <h1>New Post</h1>
+         <h2>{{neighborhoods.name}}</h2>
 
       </div>
     </div>
@@ -21,15 +22,15 @@
           <input id="body" type="text" name="body" placeholder="body">
           <input id="rank" type="text" name="rank" placeholder="rank">
 
-          {{!-- <div class="input-field">
-            <select>
+          <div class="input-field">
+            <select id="neighborhood">
               
               <option value="" disabled selected>Select Your Neighborhood</option>
               {{#each neighborhoods}}
               <option id="hoodID" value="{{this.id}}">{{this.name}} {{this.id}}</option>
               {{/each}}
             </select>
-          </div> --}}
+          </div>
           
           <button class="btn submitButton" type="submit" name="button">Submit</button>
         </form>
