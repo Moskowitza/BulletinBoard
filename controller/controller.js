@@ -2,24 +2,13 @@ var express = require("express");
 
 var router = express.Router();
 
-//PATH is for stitching paths together
-//not sure we'll use it with handlebars
-var path = require("path");
-
 // Import the model (post.js) to use its database functions.
 var db = require("../models");
 
-// create an association between tables
-// const Post = this.sequelize.define('posts');
-// const Neighborhood  = this.sequelize.define('neighborhoods');
-
-// Post.belongsTo(Neighborhood); 
-// Will add a neighborhoodID attribute to Player to hold the primary key value for Team
-
 // Create all our routes and set up logic within those routes where required.
-//1) GET all neighborhoods and load them on the index page
+
+//1) WORKS! GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
-  // NG - changed Post to Hood testing accessing neighborhood table
   db.Hood.findAll({
   }).then(function (data) {
     var hbsObject = {
@@ -40,11 +29,8 @@ router.get("/newpost/:id", function (req, res) {
   });
 });
 
-db.Post
-
-
-
-//This Path is for adding new to the Post Table (this works)
+//3) api/new is for adding new to the Post Table 
+//this works and we're getting the correct association
 router.post("/api/new", function (req, res) {
   console.log("newpost");
   console.log(req.body);
@@ -60,41 +46,42 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-//path to get neighborhood page and Include Name in the header
+//4) Neighborhood page and 
+// WORKS! includes Name in the header
+// FAILING to get associated posts
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
-  console.log("R E Q Params ID" + req.params.id)
   db.Hood.findOne({
     where: {
-      id: req.params.id,
+      id: req.params.id
     }
     // include: [db.Post]
   }).then(function (data) {
-    console.log("D A T A: " + data)
     var hbsHood = {
-      neighborhoods: data
+      neighborhoods: data, 
+      include: [db.Post]
     }
     console.log("SELECTED hbsHood is: " + hbsHood);
     res.render("hoods", hbsHood);
   });
 });
 
-//path to get Posts
-router.get("/hoods/:id", function(req, res) {
-  var query = {};
-  if (req.query.HoodID) {
-    query.HoodId = req.query.HoodID;
-  }
-  // Here we add an "include" property to our options in our findAll query
-  // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Author
-  db.Post.findAll({
-    where: query,
-    include: [db.Hood]
-  }).then(function(dbPost) {
-    res.json(dbPost);
-  });
-});
+// //path to get Posts
+// router.get("/hoods/:id", function(req, res) {
+//   var query = {};
+//   if (req.query.HoodID) {
+//     query.HoodId = req.query.HoodID;
+//   }
+//   // Here we add an "include" property to our options in our findAll query
+//   // We set the value to an array of the models we want to include in a left outer join
+//   // In this case, just db.Author
+//   db.Post.findAll({
+//     where: query,
+//     include: [db.Hood]
+//   }).then(function(dbPost) {
+//     res.json(dbPost);
+//   });
+// });
 
 // //path to get neighborhood page
 // router.get("/api/hoods/:id", function (req, res) {
