@@ -25,7 +25,7 @@ router.get("/newpost/:id", function (req, res) {
       neighborhoods: data
     };
     // NG - changed Post to Hood testing accessing neighborhood table
-    res.render("newpost",hbsObject);
+    res.render("newpost", hbsObject);
   });
 });
 
@@ -51,20 +51,24 @@ router.post("/api/new", function (req, res) {
 // FAILING to get associated posts
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
-  db.Hood.findOne({
+  db.Post.findAll({
+    include:[{
+    model: db.Hood,
+    as: "HoodId",
     where: {
-      id: req.params.id
+      HoodId: req.params.id
     }
-    // include: [db.Post]
+    }]
   }).then(function (data) {
+    console.log(data)
     var hbsHood = {
-      neighborhoods: data, 
-      include: [db.Post]
+      neighborhoods: data
     }
-    console.log("SELECTED hbsHood is: " + hbsHood);
+    console.log("SELECTED hbsHood is: " + JSON.stringify(hbsHood));
     res.render("hoods", hbsHood);
   });
 });
+
 
 // //path to get Posts
 // router.get("/hoods/:id", function(req, res) {
