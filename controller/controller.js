@@ -29,8 +29,16 @@ router.get("/newpost/", function (req, res) {
   });
 });
 
+<<<<<<< HEAD
 //3) api/new is for adding new to the Post Table 
 //this works and we're getting the correct association
+=======
+// db.Post
+
+
+
+//This Path is for adding new to the Post Table (this works)
+>>>>>>> 9efc0dc21a4037fb28d832e368d43529226d81ae
 router.post("/api/new", function (req, res) {
   console.log("newpost");
   console.log(req.body);
@@ -59,8 +67,17 @@ router.get("/hoods/:id", function (req, res) {
     var hbsPosts = {
       posts: data
     }
+<<<<<<< HEAD
     console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
     res.render("hoods", hbsPosts);
+=======
+    console.log("SELECTED hbsHood is: " + hbsHood);
+    // Need to access this in client side js
+    lat = hbsHood.neighborhoods.lat;
+    lng = hbsHood.neighborhoods.lng;
+    console.log(lat + " " + lng);
+    res.render("hoods", hbsHood);
+>>>>>>> 9efc0dc21a4037fb28d832e368d43529226d81ae
   });
 });
 
