@@ -19,6 +19,7 @@ header {
 }
 .view-button-inactive:hover {
   opacity: .5;
+  cursor: pointer;
 }
 
 
