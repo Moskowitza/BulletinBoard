@@ -28,7 +28,7 @@ router.get("/", function (req, res) {
   });
 });
 
-//2) Go to a Page associated with the neighborhood (still has drop down)
+//2) Go to a NewPost page associated with the neighborhood (use hbs for drop down)
 router.get("/newpost/:id", function (req, res) {
   db.Hood.findAll({}).then(function (data) {
     var hbsObject = {
@@ -38,26 +38,26 @@ router.get("/newpost/:id", function (req, res) {
     res.render("newpost",hbsObject);
   });
 });
-////SEThOOD
 
+db.Post
 
 
 
 //This Path is for adding new to the Post Table (this works)
-// router.post("/api/new", function (req, res) {
-//   console.log("new post");
-//   console.log(req.body);
+router.post("/api/new", function (req, res) {
+  console.log("newpost");
+  console.log(req.body);
 
-//   db.Post.create({
-//     title: req.body.title,
-//     body: req.body.body,
-//     rank: req.body.rank,
-//     hoodID: req.body.hoodID
-//   }).then(function (result) {
-//     // Send back the ID of the new Post
-//     res.end();
-//   });
-// });
+  db.Post.create({
+    title: req.body.title,
+    body: req.body.body,
+    rank: req.body.rank,
+    HoodId: req.body.HoodID
+  }).then(function (result) {
+    // Send back the ID of the new Post
+    res.end();
+  });
+});
 
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {
