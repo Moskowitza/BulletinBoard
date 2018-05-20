@@ -30,34 +30,6 @@ router.get("/", function (req, res) {
 
 //2) Go to a NewPost page associated with the neighborhood (use hbs for drop down)
 router.get("/newpost/:id", function (req, res) {
-<<<<<<< HEAD
-  // NG - changed Post to Hood testing accessing neighborhood table
-  db.Post.create({
-    title: req.body.title,
-    body: req.body.body,
-    rank: req.body.rank,
-    hoodID: req.param.id
-  }).then(
-
-  )
-  res.render("newpost");
-  });
-
-  //This Path is for adding new to the Post Table (this works)
-  router.post("/api/new", function (req, res) {
-    console.log("new post");
-    console.log(req.body);
-
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      rank: req.body.rank,
-      hoodID: req.body.hoodID
-    }).then(function (result) {
-      // Send back the ID of the new Post
-      res.end();
-    });
-=======
   db.Hood.findAll({}).then(function (data) {
     var hbsObject = {
       neighborhoods: data
@@ -67,7 +39,7 @@ router.get("/newpost/:id", function (req, res) {
   });
 });
 
-db.Post
+// db.Post
 
 
 
@@ -84,46 +56,9 @@ router.post("/api/new", function (req, res) {
   }).then(function (result) {
     // Send back the ID of the new Post
     res.end();
->>>>>>> 25bc0ea8155344a32804797cec389f9c836d967d
   });
+});
 
-<<<<<<< HEAD
-  //path to get neighborhood page
-  router.get("/hoods/:id", function (req, res) {
-    // query the database for hood where the ID matches
-    console.log("R E Q Params ID" + req.params.id)
-    db.Hood.findOne({
-      where: {
-        id: req.params.id
-      },
-      // include: [db.Post]
-    }).then(function (data) {
-      console.log("D A T A: " + data)
-      var hbsHood = {
-        neighborhoods: data
-      }
-      console.log("SELECTED hbsHood is: " + hbsHood);
-      res.render("hoods", hbsHood);
-    });
-  });
-  // //path to get neighborhood page
-  // router.get("/api/hoods/:id", function (req, res) {
-  //   // query the database for hood where the ID matches
-  //   db.Hood.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     },
-  //     include: [db.Post]
-  //   }).then(function (dbHood) {
-  //     var hbsHood = {
-  //       neighborhoods: data
-  //     };
-  //     //     res.json(hbsHood);
-  //     //     res.sendFile("hoods.handlebars");
-  //     res.render("hoods", hbsObject);
-  //   });
-  // });
-=======
 //path to get neighborhood page
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
@@ -139,6 +74,10 @@ router.get("/hoods/:id", function (req, res) {
       neighborhoods: data
     }
     console.log("SELECTED hbsHood is: " + hbsHood);
+    // Need to access this in client side js
+    lat = hbsHood.neighborhoods.lat;
+    lng = hbsHood.neighborhoods.lng;
+    console.log(lat + " " + lng);
     res.render("hoods", hbsHood);
   });
 });
@@ -159,7 +98,6 @@ router.get("/hoods/:id", function (req, res) {
 //     res.render("hoods", hbsObject);
 //   });
 // });
->>>>>>> 25bc0ea8155344a32804797cec389f9c836d967d
 
 
 

@@ -1,4 +1,7 @@
 /* GLOBAL STYLES */
+.hide {
+  display: none;
+}
 
 
 /* HEADER STYLES */
@@ -8,11 +11,14 @@ header {
   height: 200px;
   margin: 0;
 }
-.view-button-right {
+.view-button-active {
   background: lightgray;
 }
-.view-button-left {
+.view-button-inactive {
   background: rgb(182, 181, 181);
+}
+.view-button-inactive:hover {
+  opacity: .5;
 }
 
 
@@ -26,6 +32,12 @@ ul {
 /* Sets flex items to three equal columns */
 li {
   width: calc(100% / 3);
+}
+#map
+{
+    height:500px;
+    width:100%;
+
 }
 
 
