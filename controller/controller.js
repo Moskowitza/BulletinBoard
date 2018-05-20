@@ -18,8 +18,8 @@ router.get("/", function (req, res) {
   });
 });
 
-//2) Go to a NewPost page associated with the neighborhood (use hbs for drop down)
-router.get("/newpost/:id", function (req, res) {
+//2) Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
+router.get("/newpost/", function (req, res) {
   db.Hood.findAll({}).then(function (data) {
     var hbsObject = {
       neighborhoods: data
@@ -52,20 +52,15 @@ router.post("/api/new", function (req, res) {
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
   db.Post.findAll({
-    include:[{
-    model: db.Hood,
-    as: "HoodId",
-    where: {
-      HoodId: req.params.id
-    }
-    }]
+    where:{HoodID: req.params.id},
+    include:[db.Hood]
   }).then(function (data) {
     console.log(data)
-    var hbsHood = {
-      neighborhoods: data
+    var hbsPosts = {
+      posts: data
     }
-    console.log("SELECTED hbsHood is: " + JSON.stringify(hbsHood));
-    res.render("hoods", hbsHood);
+    console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
+    res.render("hoods", hbsPosts);
   });
 });
 
