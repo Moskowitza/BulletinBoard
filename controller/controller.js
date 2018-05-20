@@ -2,25 +2,15 @@ var express = require("express");
 
 var router = express.Router();
 
-//PATH is for stitching paths together
-//not sure we'll use it with handlebars
-var path = require("path");
-
 // Import the model (post.js) to use its database functions.
 var db = require("../models");
 
-// create an association between tables
-// const Post = this.sequelize.define('posts');
-// const Neighborhood  = this.sequelize.define('neighborhoods');
-
-// Post.belongsTo(Neighborhood); 
-// Will add a neighborhoodID attribute to Player to hold the primary key value for Team
-
 // Create all our routes and set up logic within those routes where required.
-//1) GET all neighborhoods and load them on the index page
+
+//1) WORKS! GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
-  // NG - changed Post to Hood testing accessing neighborhood table
-  db.Hood.findAll({}).then(function (data) {
+  db.Hood.findAll({
+  }).then(function (data) {
     var hbsObject = {
       neighborhoods: data
     };
@@ -28,22 +18,27 @@ router.get("/", function (req, res) {
   });
 });
 
-//2) Go to a NewPost page associated with the neighborhood (use hbs for drop down)
-router.get("/newpost/:id", function (req, res) {
+//2) Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
+router.get("/newpost/", function (req, res) {
   db.Hood.findAll({}).then(function (data) {
     var hbsObject = {
       neighborhoods: data
     };
     // NG - changed Post to Hood testing accessing neighborhood table
-    res.render("newpost",hbsObject);
+    res.render("newpost", hbsObject);
   });
 });
 
+<<<<<<< HEAD
+//3) api/new is for adding new to the Post Table 
+//this works and we're getting the correct association
+=======
 // db.Post
 
 
 
 //This Path is for adding new to the Post Table (this works)
+>>>>>>> 9efc0dc21a4037fb28d832e368d43529226d81ae
 router.post("/api/new", function (req, res) {
   console.log("newpost");
   console.log(req.body);
@@ -59,28 +54,51 @@ router.post("/api/new", function (req, res) {
   });
 });
 
-//path to get neighborhood page
+//4) Neighborhood page and 
+// WORKS! includes Name in the header
+// FAILING to get associated posts
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
-  console.log("R E Q Params ID" + req.params.id)
-  db.Hood.findOne({
-    where: {
-      id: req.params.id
-    },
-    // include: [db.Post]
+  db.Post.findAll({
+    where:{HoodID: req.params.id},
+    include:[db.Hood]
   }).then(function (data) {
-    console.log("D A T A: " + data)
-    var hbsHood = {
-      neighborhoods: data
+    console.log(data)
+    var hbsPosts = {
+      posts: data
     }
+<<<<<<< HEAD
+    console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
+    res.render("hoods", hbsPosts);
+=======
     console.log("SELECTED hbsHood is: " + hbsHood);
     // Need to access this in client side js
     lat = hbsHood.neighborhoods.lat;
     lng = hbsHood.neighborhoods.lng;
     console.log(lat + " " + lng);
     res.render("hoods", hbsHood);
+>>>>>>> 9efc0dc21a4037fb28d832e368d43529226d81ae
   });
 });
+
+
+// //path to get Posts
+// router.get("/hoods/:id", function(req, res) {
+//   var query = {};
+//   if (req.query.HoodID) {
+//     query.HoodId = req.query.HoodID;
+//   }
+//   // Here we add an "include" property to our options in our findAll query
+//   // We set the value to an array of the models we want to include in a left outer join
+//   // In this case, just db.Author
+//   db.Post.findAll({
+//     where: query,
+//     include: [db.Hood]
+//   }).then(function(dbPost) {
+//     res.json(dbPost);
+//   });
+// });
+
 // //path to get neighborhood page
 // router.get("/api/hoods/:id", function (req, res) {
 //   // query the database for hood where the ID matches
