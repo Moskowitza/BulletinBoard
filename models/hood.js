@@ -6,10 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     lat: 
     {
-      type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL(10, 6)
     },
     lng: {
-      type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL(10, 6)
     } 
   });
 

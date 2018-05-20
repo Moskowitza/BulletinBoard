@@ -39,7 +39,7 @@ router.get("/newpost/:id", function (req, res) {
   });
 });
 
-db.Post
+// db.Post
 
 
 
@@ -74,6 +74,10 @@ router.get("/hoods/:id", function (req, res) {
       neighborhoods: data
     }
     console.log("SELECTED hbsHood is: " + hbsHood);
+    // Need to access this in client side js
+    lat = hbsHood.neighborhoods.lat;
+    lng = hbsHood.neighborhoods.lng;
+    console.log(lat + " " + lng);
     res.render("hoods", hbsHood);
   });
 });
