@@ -37,7 +37,12 @@
                     <h1>Posts</h1>
                     {{!-- List for posts that will populate from database --}}
                     <ul>
-                        {{#each posts}} Post {{@index}} <li>{{this.title}}</li> <li> {{this.body}} </li><li>{{this.rank}}</li> {{/each}}
+                        {{#each posts}} 
+                        <h3>Post {{@index}} </h3>
+                        <li>{{this.title}}</li> 
+                        <li>{{this.body}} </li>
+                        <li>{{this.rank}}</li> 
+                        {{/each}}
                     </ul>
                 </div>
 
