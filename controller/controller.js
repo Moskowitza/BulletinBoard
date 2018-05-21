@@ -60,7 +60,9 @@ router.get("/hoods/:id", function (req, res) {
     var hbsPosts = {
       posts: data
     }
+    var hoodName=hbsPosts.posts[0].Hood.name;
     console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
+    console.log("hood name: "+hoodName)
     res.render("hoods", hbsPosts);
 
     // console.log("SELECTED hbsHood is: " + hbsHood);

@@ -4,9 +4,9 @@
             <div class="col s12">
                 {{!-- Header should be whichever neighborhood was clicked --}}
                 <h1>
-                    {{#each posts}}
-                    {{this.Hood.name}}
-                    {{/each}}
+
+                    {{#with posts.[0]}} {{Hood.name}} {{/with}}
+
                 </h1>
 
             </div>
@@ -37,14 +37,7 @@
                     <h1>Posts</h1>
                     {{!-- List for posts that will populate from database --}}
                     <ul>
-                        {{#each posts}}
-                        
-                            {{this.title}}
-                  
-                            {{this.body}}
-                  
-                            {{this.rank}}
-                        {{/each}}
+                        {{#each posts}} Post {{@index}} <li>{{this.title}}</li> <li> {{this.body}} </li><li>{{this.rank}}</li> {{/each}}
                     </ul>
                 </div>
 
