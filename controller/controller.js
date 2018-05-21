@@ -78,11 +78,12 @@ router.get("/hoods/:id", function (req, res) {
 
   });
   router.put("/api/vote:id", function (req, res) {
+    console.log("API ROUTE FOR VOTE HIT!!!!!")
     db.Post.update({
-      rank: req.body.rank
+      rank: "10"
     }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
       }).then(function(dbPost){
         res.json(dbPost)
