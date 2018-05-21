@@ -2,13 +2,10 @@
     <div class="container ">
         <div class="row">
             <div class="col s12">
-                {{!-- Header should be whichever neighborhood was clicked --}}
+                {{!-- This is funky but works! --}}
                 <h1>
-
                     {{#with posts.[0]}} {{Hood.name}} {{/with}}
-
                 </h1>
-
             </div>
         </div>
 
@@ -31,18 +28,19 @@
         <div class="row">
 
             <div class="col s12 hood-content">
-
-                <div id="map" class="hide" data-lat="{{neighborhoods.lat}}" data-lng="{{neighborhoods.lng}}"></div>
+                {{#with posts.[0]}} 
+                <div id="map" class="hide" data-lat="{{Hoods.lat}}" data-lng="{{Hoods.lng}}"></div>
+                {{/with}}
                 <div id="list">
                     <h1>Posts</h1>
-                    {{!-- List for posts that will populate from database --}}
+                    {{!-- FORMAT ME!!!--}}
                     <ul>
-                        {{#each posts}} 
+                       <li> {{#each posts}} 
                         <h3>Post {{@index}} </h3>
-                        <li>{{this.title}}</li> 
-                        <li>{{this.body}} </li>
-                        <li>{{this.rank}}</li> 
-                        {{/each}}
+                        {{this.title}}
+                        {{this.body}} 
+                        {{this.rank}}
+                        {{/each}}</li> 
                     </ul>
                 </div>
 
