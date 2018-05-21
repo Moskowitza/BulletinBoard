@@ -80,7 +80,7 @@ router.get("/hoods/:id", function (req, res) {
   router.put("/api/vote:id", function (req, res) {
     console.log("API ROUTE FOR VOTE HIT!!!!!")
     db.Post.update({
-      rank: "10"
+      rank: req.body.rank
     }, {
       where: {
         id: req.params.id
