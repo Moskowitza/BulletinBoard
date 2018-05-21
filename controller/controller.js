@@ -48,8 +48,7 @@ router.post("/api/new", function (req, res) {
 });
 
 //4) Neighborhood page and 
-// WORKS! includes Name in the header
-// FAILING to get associated posts
+// WORKS! includes Name in the header and relevant posts
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
   db.Post.findAll({
@@ -67,11 +66,19 @@ router.get("/hoods/:id", function (req, res) {
 
     // console.log("SELECTED hbsHood is: " + hbsHood);
     // // Need to access this in client side js
+    ///AARON COMMENTS: this is now hbsPosts.posts[0].Hood.lat 
+    ///HOWEVER it may still not load in the view
+    ///I would suggest a NEW ROUTE just for the MAP
     // lat = hbsHood.neighborhoods.lat;
     // lng = hbsHood.neighborhoods.lng;
     // console.log(lat + " " + lng);
     // res.render("hoods", hbsHood);
 
+
+
+  });
+  router.get("/api/vote", function (req, res) {
+    db.Post.update({rank: newRank});
   });
 });
 
@@ -108,29 +115,6 @@ router.get("/hoods/:id", function (req, res) {
 //     //     res.json(hbsHood);
 //     //     res.sendFile("hoods.handlebars");
 //     res.render("hoods", hbsObject);
-//   });
-// });
-
-
-
-
-
-
-
-// router.put("/api/models/post/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   console.log("condition", condition);
-
-//   db.Post.update({
-//     rank: req.body.rank
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
 //   });
 // });
 

@@ -20,6 +20,17 @@ $(document).ready(function () {
       });
   });
 
-
+  $("#upvote").on("click", function (event) {
+    var rank=$(this).data("rank");
+    var newRank= rank + 1;
+    var newRankObj = {
+      rank : newRank
+    };
+    $.ajax("/api/vote", {
+      type: "PUT",
+      data: newRankObj
+    }).then(function () {
+      console.log("upvoted");
+    });
+  });
 });
-
