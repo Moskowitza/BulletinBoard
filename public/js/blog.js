@@ -20,17 +20,22 @@ $(document).ready(function () {
       });
   });
 
-  $("#upvote").on("click", function (event) {
+  $(".upVote").on("click", function (event) {
+    event.preventDefault();
+    var id=$(this).data("id");
     var rank=$(this).data("rank");
+    console.log("current Rank: "+ rank)
     var newRank= rank + 1;
     var newRankObj = {
       rank : newRank
     };
-    $.ajax("/api/vote", {
-      type: "PUT",
-      data: newRankObj
-    }).then(function () {
+    console.log("New Rank : "+ newRankObj)
+    $.ajax("/api/vote"+ id,{
+      type:"PUT",
+      data: newRankObj})
+    .then(function () {
       console.log("upvoted");
+      location.reload();
     });
   });
 });

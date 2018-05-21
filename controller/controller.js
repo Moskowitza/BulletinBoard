@@ -52,16 +52,16 @@ router.post("/api/new", function (req, res) {
 router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
   db.Post.findAll({
-    where:{HoodID: req.params.id},
-    include:[db.Hood]
+    where: { HoodID: req.params.id },
+    include: [db.Hood]
   }).then(function (data) {
     console.log(data)
     var hbsPosts = {
       posts: data
     }
-    var hoodName=hbsPosts.posts[0].Hood.name;
+    var hoodName = hbsPosts.posts[0].Hood.name;
     console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
-    console.log("hood name: "+hoodName)
+    console.log("hood name: " + hoodName)
     res.render("hoods", hbsPosts);
 
     // console.log("SELECTED hbsHood is: " + hbsHood);
@@ -77,8 +77,27 @@ router.get("/hoods/:id", function (req, res) {
 
 
   });
-  router.get("/api/vote", function (req, res) {
-    db.Post.update({rank: newRank});
+  router.put("/api/vote:id", function (req, res) {
+    var condition = "id = " + req.params.id;
+    console.log("condition", condition)
+    console.log("/api/vote has been H I T with newRank : " + req.body.newRankObj)
+
+    db.Post.update({
+      rank: req.body.newRank
+    },
+      {
+        where: {
+          id: req.body.id
+        }
+      },
+      condition, function (result) {
+        if (result.changedRoews == 0) {
+          return res.status(404).end();
+        } else {
+          res.status(200).end();
+        }
+      }
+    );
   });
 });
 
