@@ -62,14 +62,14 @@ router.get("/hoods/:id", function (req, res) {
     }
     console.log("SELECTED hbsHood is: " + JSON.stringify(hbsPosts));
     res.render("hoods", hbsPosts);
-=======
+
     console.log("SELECTED hbsHood is: " + hbsHood);
     // Need to access this in client side js
     lat = hbsHood.neighborhoods.lat;
     lng = hbsHood.neighborhoods.lng;
     console.log(lat + " " + lng);
     res.render("hoods", hbsHood);
->>>>>>> 9efc0dc21a4037fb28d832e368d43529226d81ae
+
   });
 });
 
