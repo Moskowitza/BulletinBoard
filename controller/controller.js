@@ -78,26 +78,15 @@ router.get("/hoods/:id", function (req, res) {
 
   });
   router.put("/api/vote:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-    console.log("condition", condition)
-    console.log("/api/vote has been H I T with newRank : " + req.body.newRankObj)
-
     db.Post.update({
-      rank: req.body.newRank
-    },
-      {
-        where: {
-          id: req.body.id
-        }
-      },
-      condition, function (result) {
-        if (result.changedRoews == 0) {
-          return res.status(404).end();
-        } else {
-          res.status(200).end();
-        }
+      rank: req.body.rank
+    }, {
+      where: {
+        id: req.body.id
       }
-    );
+      }).then(function(dbPost){
+        res.json(dbPost)
+      });
   });
 });
 

@@ -27,12 +27,13 @@ $(document).ready(function () {
     console.log("current Rank: "+ rank)
     var newRank= rank + 1;
     var newRankObj = {
+      id : this.id,
       rank : newRank
     };
     console.log("New Rank : "+ newRankObj)
     $.ajax("/api/vote"+ id,{
       type:"PUT",
-      data: newRankObj})
+      data: newRank})
     .then(function () {
       console.log("upvoted");
       location.reload();
