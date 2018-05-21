@@ -36,11 +36,13 @@
                     {{!-- FORMAT ME!!!--}}
                     <ul>
                        <li> {{#each posts}} 
-                        <h3>Post {{@index}} </h3>
-                        {{this.title}}
+                        <h3>{{this.title}} </h3>
+                        <hr>
                         {{this.body}} 
+                        <hr>
+                        <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">WaWa</button>
                         {{this.rank}}
-                        <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Up</button>
+                        <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">SEPTA</button>
                         {{/each}}</li> 
                     </ul>
                 </div>
