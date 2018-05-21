@@ -53,7 +53,11 @@ router.get("/hoods/:id", function (req, res) {
   // query the database for hood where the ID matches
   db.Post.findAll({
     where: { HoodID: req.params.id },
-    include: [db.Hood]
+    include: [db.Hood],
+    order: [
+      ['rank','DESC'],
+      ['title','ASC'],
+    ]
   }).then(function (data) {
     console.log(data)
     var hbsPosts = {
