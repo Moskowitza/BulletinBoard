@@ -34,11 +34,13 @@
 
                 <div id="map" class="hide" data-lat="{{neighborhoods.lat}}" data-lng="{{neighborhoods.lng}}"></div>
                 <div id="list">
-                    <h1>test text</h1>
+                    <h1>Posts</h1>
                     {{!-- List for posts that will populate from database --}}
                     <ul>
                         {{#each posts}}
-                        <li>{{this.title}}</li>
+                            {{this.title}}
+                            {{this.body}}
+                            {{this.rank}}
                         {{/each}}
                     </ul>
                 </div>
