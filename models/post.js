@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     rank: {
       type: DataTypes.INTEGER,
+      defaultValue: 1,
       allowNull: false,
       len: [1]
     }
