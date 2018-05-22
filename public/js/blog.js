@@ -8,6 +8,7 @@ $(document).ready(function () {
     var newPost = {
       title: $("#title").val().trim(),
       body: $("#body").val().trim(),
+      location: $("#location").val().trim(),
       // rank: $("#rank").val().trim(),
       // $("#neighborhood").val() works!!!! but still need to write to database
       HoodID: $("#neighborhood").val()
