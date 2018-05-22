@@ -14,7 +14,8 @@ header {
   color: white;
   height: 150px;
   /* height: 200px; */
-  margin: 0;
+  margin-right: 70px;
+  margin-left: 70px;
   
 }
 .view-button-active {
@@ -46,14 +47,21 @@ li {
     width:100%;
 }
 
+.container {
+
+
+}
+
 
 /* FOOTER STYLES */
 footer {
-  /* background: slategray; */
+
   background: rgb(90, 39, 39);
   color: white;
   height: 100px;
   margin: 0;
+  margin-right: 70px;
+  margin-left: 70px;
 }
 footer a {
   color: white;
