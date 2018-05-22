@@ -4,7 +4,7 @@
       <div class="col s12">
         {{!-- Header should be whichever neighborhood was clicked --}}
         <h1>New Post</h1>
-         <h2>{{neighborhoods.name}}</h2>
+        <h2>{{neighborhoods.name}}</h2>
 
       </div>
     </div>
@@ -24,14 +24,14 @@
 
           <div class="input-field">
             <select id="neighborhood">
-              
+
               <option value="" disabled selected>Select Your Neighborhood</option>
               {{#each neighborhoods}}
               <option id="hoodID" value="{{this.id}}">{{this.name}} {{this.id}}</option>
               {{/each}}
             </select>
           </div>
-          
+
           <button class="btn submitButton" type="submit" name="button">Submit</button>
         </form>
       </div>
@@ -39,25 +39,21 @@
 
   </div>
 
-  {{!-- This button triggers more buttons for adding a post or selecting a new neighborhood --}}
   <div class="fixed-action-btn">
-    <a href="#" class="btn-floating btn-large z-depth-5">
+    <a href="#" class="btn-floating btn-large ">
       <i class="large material-icons">more_vert</i>
     </a>
     <ul>
-      {{!-- This button will trigger a modal for new posts --}}
-      <li class="">
-        <a href="/newpost" class="btn-floating btn-floating-1 btn-large z-depth-5">
-          POST {{!-- Can add icon like below --}} {{!--
-          <i class="large material-icons">mood</i> --}}
+      <li>
+        <a href="/newpost/{{neighborhoods.id}}" class="btn-floating btn-large">
+          <i class="large material-icons">insert_comment</i>
         </a>
       </li>
-      {{!-- This button will trigger a modal for selecting a new neighborhood --}} {{!--
-      <li class="modal-7-trigger">
-        <a href="#modal-7" class="btn-floating btn-floating-2 btn-large z-depth-5">
-          <i class="large material-icons">local_dining</i>
+      <li>
+        <a href="/" class="btn-floating btn-large">
+          <i class="large material-icons">home</i>
         </a>
-      </li> --}}
+      </li>
     </ul>
   </div>
 

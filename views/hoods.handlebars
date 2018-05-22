@@ -28,22 +28,21 @@
         <div class="row">
 
             <div class="col s12 hood-content">
-                {{#with posts.[0]}} 
+                {{#with posts.[0]}}
                 <div id="map" class="hide" data-lat="{{Hood.lat}}" data-lng="{{Hood.lng}}"></div>
                 {{/with}}
                 <div id="list">
                     <h1>Posts</h1>
                     {{!-- FORMAT ME!!!--}}
                     <ul>
-                       <li> {{#each posts}} 
-                        <h3>{{this.title}} </h3>
-                        <hr>
-                        {{this.body}} 
-                        <hr>
-                        <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">WaWa</button>
-                        {{this.rank}}
-                        <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">SEPTA</button>
-                        {{/each}}</li> 
+                        <li> {{#each posts}}
+                            <h3>{{this.title}} </h3>
+                            <hr> {{this.body}}
+                            <hr>
+                            <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">WaWa</button>
+                            {{this.rank}}
+                            <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">SEPTA</button>
+                            {{/each}}</li>
                     </ul>
                 </div>
 
@@ -51,25 +50,22 @@
         </div>
     </div>
 
-    {{!-- This button triggers more buttons for adding a post or selecting a new neighborhood --}}
+    
     <div class="fixed-action-btn">
-        <a href="#" class="btn-floating btn-large z-depth-5">
-            <i class="large material-icons">insert_comment</i>
+        <a href="#" class="btn-floating btn-large ">
+            <i class="large material-icons">more_vert</i>
         </a>
         <ul>
-            {{!-- This button will trigger a modal for new posts --}}
-            <li class="">
-                <a href="/newpost/{{neighborhoods.id}}" class="btn-floating btn-floating-1 btn-large z-depth-5">
-                    POST {{!-- Can add icon like below --}} {{!--
-                    <i class="large material-icons">mood</i> --}}
+            <li>
+                <a href="/newpost/{{neighborhoods.id}}" class="btn-floating btn-large">
+                    <i class="large material-icons">insert_comment</i>
                 </a>
             </li>
-            {{!-- This button will trigger a modal for selecting a new neighborhood --}} {{!--
-            <li class="modal-7-trigger">
-                <a href="#modal-7" class="btn-floating btn-floating-2 btn-large z-depth-5">
-                    <i class="large material-icons">local_dining</i>
+            <li>
+                <a href="/" class="btn-floating btn-large">
+                    <i class="large material-icons">home</i>
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 
