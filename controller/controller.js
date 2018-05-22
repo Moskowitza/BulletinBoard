@@ -39,6 +39,7 @@ router.post("/api/new", function (req, res) {
   db.Post.create({
     title: req.body.title,
     body: req.body.body,
+    location: req.body.location,
     rank: req.body.rank,
     HoodId: req.body.HoodID
   }).then(function (result) {
