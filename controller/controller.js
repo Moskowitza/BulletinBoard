@@ -39,6 +39,7 @@ router.post("/api/new", function (req, res) {
   db.Post.create({
     title: req.body.title,
     body: req.body.body,
+    location: req.body.location,
     rank: req.body.rank,
     HoodId: req.body.HoodID
   }).then(function (result) {
@@ -77,10 +78,9 @@ router.get("/hoods/:id", function (req, res) {
     // lng = hbsHood.neighborhoods.lng;
     // console.log(lat + " " + lng);
     // res.render("hoods", hbsHood);
-
-
-
   });
+
+  // 5) Put request for updating votes. 
   router.put("/api/vote:id", function (req, res) {
     console.log("API ROUTE FOR VOTE HIT!!!!!")
     db.Post.update({
