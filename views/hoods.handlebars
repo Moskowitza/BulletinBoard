@@ -4,7 +4,6 @@
             <div class="col s12">
                 {{!-- This is funky but works! --}}
                 <h1>
-                    {{hood.name}}
                     {{#with posts.[0]}} {{Hood.name}} {{/with}}
                 </h1>
             </div>
@@ -30,7 +29,7 @@
 
             <div class="col s12 hood-content">
                 {{#with posts.[0]}} 
-                <div id="map" class="hide" data-lat="{{Hoods.lat}}" data-lng="{{Hoods.lng}}"></div>
+                <div id="map" class="hide" data-lat="{{Hood.lat}}" data-lng="{{Hood.lng}}"></div>
                 {{/with}}
                 <div id="list">
                     <h1>Posts</h1>
