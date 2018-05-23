@@ -64,6 +64,7 @@ app.use(routes);
 // },
 // {
 //   name: "Society Hill",
+//   slug: "societyhill",
 //   lat: 39.943731,
 //   lng: -75.147841
 // },
