@@ -4,6 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     name:{
       type: DataTypes.STRING
     },
+    slug:{
+      type: DataTypes.STRING
+      },
     lat: 
     {
       type: DataTypes.DECIMAL(10, 6)
