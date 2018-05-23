@@ -7,16 +7,13 @@
 /* HEADER STYLES */
 header {
 
- background-image:url('../images/header2.jpg');
-
- font-family: 'Damion', cursive;
-
+  background-image:url('../images/headder.jpg');
+  font-family: 'Damion', cursive;
   color: white;
   height: 150px;
-  /* height: 200px; */
   margin-right: 70px;
   margin-left: 70px;
-  
+
 }
 .view-button-active {
   background: lightgray;
@@ -47,10 +44,12 @@ li {
     width:100%;
 }
 
-.container {
-
+#map-list-buttons{
+  margin-right: 70px;
+  margin-left: 70px;
 
 }
+
 
 
 /* FOOTER STYLES */

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "mysql2018",
+    "password": "passw0rd",
     "database": "bulletin",
     "host": "127.0.0.1",
     "dialect": "mysql"
