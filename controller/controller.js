@@ -94,7 +94,17 @@ router.get("/hoods/:id", function (req, res) {
       });
   });
 });
-
+//6) Getting a JSON file of posts
+router.get("/postlocal", function (req, res) {
+  db.Post.findAll({
+  }).then(function (data) {
+    var hbsObject = {
+      neighborhoods: data
+    };
+    res.json(hbsObject);
+    console.log(res.json(hbsObject));
+  });
+});
 
 // //path to get Posts
 // router.get("/hoods/:id", function(req, res) {
