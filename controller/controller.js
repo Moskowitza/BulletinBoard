@@ -60,7 +60,7 @@ router.get("/hoods/:id", function (req, res) {
       ['title','ASC'],
     ]
   }).then(function (data) {
-    console.log(data)
+    console.log("data from hoods route "+data)
     var hbsPosts = {
       posts: data
     }
@@ -102,7 +102,8 @@ router.get("/postlocal", function (req, res) {
       neighborhoods: data
     };
     res.json(hbsObject);
-    console.log(res.json(hbsObject));
+    console.log(res.json(hbsObject))
+    locationsArr=[];
   });
 });
 
