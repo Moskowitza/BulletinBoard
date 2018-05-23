@@ -6,10 +6,14 @@
 
 /* HEADER STYLES */
 header {
-  background: slategray;
+
+  background-image:url('../images/headder.jpg');
+  font-family: 'Damion', cursive;
   color: white;
-  height: 200px;
-  margin: 0;
+  height: 150px;
+  margin-right: 70px;
+  margin-left: 70px;
+
 }
 .view-button-active {
   background: lightgray;
@@ -40,13 +44,23 @@ li {
     width:100%;
 }
 
+#map-list-buttons{
+  margin-right: 70px;
+  margin-left: 70px;
+
+}
+
+
 
 /* FOOTER STYLES */
 footer {
-  background: slategray;
+
+  background: rgb(90, 39, 39);
   color: white;
   height: 100px;
   margin: 0;
+  margin-right: 70px;
+  margin-left: 70px;
 }
 footer a {
   color: white;
