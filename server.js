@@ -44,39 +44,39 @@ app.use(routes);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 // db.sequelize.sync({force:true}).then(function() {
-//   db.Post.bulkCreate([{
-//     title: "New Posting",
-//     body: "Welcome to Fishtown",
-//     rank: 1,
-//     HoodID: 1
-//   }]);
 //   db.Hood.bulkCreate([{
 //     name: "Fishtown",
+//     slug: "fishtown",
 //     lat: 39.972095,
 //     lng: -75.129644
 //   },
 // {
 //   name: "Old City",
+//   slug: "oldcity",
 //   lat: 39.952482,
 //   lng: -75.143034
 // },
 // {
 //   name: "Graduate Hospital",
+//   slug: "graduatehospital",
 //   lat: 39.942489,
 //   lng: -75.173461
 // },
 // {
 //   name: "Society Hill",
+//   slug: "societyhill",
 //   lat: 39.943731,
 //   lng: -75.147841
 // },
 // {
 //   name: "Powelton Village",
+//   slug: "poweltonvillage",
 //   lat: 39.962055,
 //   lng: -75.192044
 // },
 // {
 //   name: "Fairmount",
+//   slug: "fairmount",
 //   lat: 39.968239,
 //   lng: -75.169685
 // }])

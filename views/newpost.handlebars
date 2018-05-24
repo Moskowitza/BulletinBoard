@@ -20,14 +20,15 @@
         <form active="../api/models/post" method="post">
           <input id="title" type="text" name="title" placeholder="title">
           <input id="body" type="text" name="body" placeholder="body">
-          <input id="rank" type="text" name="rank" placeholder="rank">
+          <input id="location" type="text" name="location" placeholder="location">
+          {{!-- <input id="rank" type="text" name="rank" placeholder="rank"> --}}
 
           <div class="input-field">
             <select id="neighborhood">
 
               <option value="" disabled selected>Select Your Neighborhood</option>
               {{#each neighborhoods}}
-              <option id="hoodID" value="{{this.id}}">{{this.name}} {{this.id}}</option>
+              <option id="hoodID" value="{{this.id}}">{{this.name}}</option>
               {{/each}}
             </select>
           </div>
@@ -37,24 +38,6 @@
       </div>
     </div>
 
-  </div>
-
-  <div class="fixed-action-btn">
-    <a href="#" class="btn-floating btn-large ">
-      <i class="large material-icons">more_vert</i>
-    </a>
-    <ul>
-      <li>
-        <a href="/newpost/{{neighborhoods.id}}" class="btn-floating btn-large">
-          <i class="large material-icons">insert_comment</i>
-        </a>
-      </li>
-      <li>
-        <a href="/" class="btn-floating btn-large">
-          <i class="large material-icons">home</i>
-        </a>
-      </li>
-    </ul>
   </div>
 
 </main>
