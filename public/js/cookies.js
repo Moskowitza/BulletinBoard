@@ -6,26 +6,24 @@ $(document).ready(function (event) {
     $(".upVote").on("click", function () {
         // creae a voteID called : upvoted#
         //if it exists, prevent vote
-        var voteID = "upvoted" + $(".upVote").data("id");
-        console.log("vote id: " + voteID)
-        checkCookie(voteID);
+        var voteID = "upvoted" + $(this).data("id");
+        var id = $(this).data("id");
+        var rank = $(this).data("rank");
+        checkCookie(voteID, id, rank);
     });
 
 
-
-    function checkCookie() {
+    function checkCookie(voteID,id,rank) {
         var vote = getCookie(voteID);
         //if Vote cookie DOES exist
         if (vote != "") {
-            // console.log("ok, we got a cookie")
             alert("You already upvoted that jawn");
             $('"' + '.' + voteID + '"').prop("disabled", true);
         //ELSE do the ajax call and set a cookie
         } else {
             // DO the button work
             // 1) create the data for the ajax call
-            var id = $(this).data("id");
-            var rank = $(this).data("rank");
+
             var newRankObj = {
                 id: id,
                 rank: rank + 1
@@ -39,6 +37,8 @@ $(document).ready(function (event) {
                     console.log("upvoted");
                     // reload the page
                     location.reload();
+                })
+                    .then(function () {
                     //set cookie name=voteID, value=true,lenght=1day
                     var status = "true";
                     setCookie(voteID, status, 1);
