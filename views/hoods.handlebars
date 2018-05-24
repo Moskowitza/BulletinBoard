@@ -3,9 +3,10 @@
         <div class="row">
             <div class="col s12">
                 {{!-- This is funky but works! --}}
-                <h1> 
-                    {{!-- <img src="{{this.slug}}.img"> --}}
-                    {{#with posts.[0]}} {{Hood.name}} {{/with}}
+                <h1> {{#with posts.[0]}} 
+                    {{!-- <img src="../public/images/{{Hood.slug}}.jpg"> --}}
+                    {{Hood.name}} 
+                    {{/with}}
                 </h1>
             </div>
         </div>
@@ -39,7 +40,7 @@
                     {{!-- FORMAT ME!!!--}}
                     <ul>
                         <li> {{#each posts}}
-                            <h3>{{this.title}} </h3>
+                            <h5>{{this.title}} </h5>
                             <hr> {{this.body}}
                             <hr>
                             <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">WaWa</button>
