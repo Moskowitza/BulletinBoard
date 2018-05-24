@@ -6,17 +6,54 @@ $(document).ready(function (event) {
     $(".upVote").on("click", function () {
         // creae a voteID called : upvoted#
         //if it exists, prevent vote
-        var voteID = "upvoted" + $(".upVote").data("id");
-        console.log("vote id: " + voteID)
-        var status = "true";
-        checkCookie(voteID);
-        //set cookie name=voteID, value=true,lenght=1day
-        setCookie(voteID, status, 1);
-        //We need to the parse out the cookie name
-        getCookie(voteID);
-        //
-        
+        var voteID = "upvoted" + $(this).data("id");
+        var id = $(this).data("id");
+        var rank = $(this).data("rank");
+        var newRank= rank +1;
+        checkCookie(voteID, id, rank, newRank);
     });
+    $(".downVote").on("click", function () {
+        // creae a voteID called : upvoted#
+        //if it exists, prevent vote
+        var voteID = "downvoted" + $(this).data("id");
+        var id = $(this).data("id");
+        var rank = $(this).data("rank");
+        var newRank= rank -1;
+        checkCookie(voteID, id, rank, newRank);
+    });
+
+    function checkCookie(voteID,id,rank, newRank) {
+        var vote = getCookie(voteID);
+        //if Vote cookie DOES exist
+        if (vote != "") {
+            alert("You clicked that jawn");
+            $('"' + '.' + voteID + '"').prop("disabled", true);
+        //ELSE do the ajax call and set a cookie
+        } else {
+            // DO the button work
+            // 1) create the data for the ajax call
+
+            var newRankObj = {
+                id: id,
+                rank: newRank
+            };
+            //Ajax to send data to the controller!
+            $.ajax("/api/vote" + id, {
+                type: "PUT",
+                data: newRankObj
+            })
+                .then(function () {
+                    console.log("upvoted");
+                    // reload the page
+                    location.reload();
+                })
+                    .then(function () {
+                    //set cookie name=voteID, value=true,lenght=1day
+                    var status = "true";
+                    setCookie(voteID, status, 1);
+                });
+        }
+    }
     function setCookie(cname, cvalue, exdays) {
         var d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -36,33 +73,6 @@ $(document).ready(function (event) {
             }
         }
         return "";
-    }
-
-    function checkCookie(voteidentifier) {
-        var vote = getCookie(voteidentifier);
-        if (vote != "") {
-            // console.log("ok, we got a cookie")
-            alert("You already upvoted that jawn");
-            $('"' + '.' + voteidentifier + '"').prop("disabled", true);
-        } else {
-            var id = $(this).data("id");
-            var rank = $(this).data("rank");
-            console.log("current Rank: " + rank)
-            var newRank = rank + 1;
-            var newRankObj = {
-                id: id,
-                rank: rank + 1
-            };
-            console.log("New Rank : " + newRankObj)
-            $.ajax("/api/vote" + id, {
-                type: "PUT",
-                data: newRankObj
-            })
-                .then(function () {
-                    console.log("upvoted");
-                    location.reload();
-                });
-        }
     }
 
 });
