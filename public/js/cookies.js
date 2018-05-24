@@ -9,15 +9,24 @@ $(document).ready(function (event) {
         var voteID = "upvoted" + $(this).data("id");
         var id = $(this).data("id");
         var rank = $(this).data("rank");
-        checkCookie(voteID, id, rank);
+        var newRank= rank +1;
+        checkCookie(voteID, id, rank, newRank);
+    });
+    $(".downVote").on("click", function () {
+        // creae a voteID called : upvoted#
+        //if it exists, prevent vote
+        var voteID = "downvoted" + $(this).data("id");
+        var id = $(this).data("id");
+        var rank = $(this).data("rank");
+        var newRank= rank -1;
+        checkCookie(voteID, id, rank, newRank);
     });
 
-
-    function checkCookie(voteID,id,rank) {
+    function checkCookie(voteID,id,rank, newRank) {
         var vote = getCookie(voteID);
         //if Vote cookie DOES exist
         if (vote != "") {
-            alert("You already upvoted that jawn");
+            alert("You clicked that jawn");
             $('"' + '.' + voteID + '"').prop("disabled", true);
         //ELSE do the ajax call and set a cookie
         } else {
@@ -26,7 +35,7 @@ $(document).ready(function (event) {
 
             var newRankObj = {
                 id: id,
-                rank: rank + 1
+                rank: newRank
             };
             //Ajax to send data to the controller!
             $.ajax("/api/vote" + id, {
