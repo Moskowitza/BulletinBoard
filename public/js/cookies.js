@@ -26,7 +26,7 @@ $(document).ready(function (event) {
         var vote = getCookie(voteID);
         //if Vote cookie DOES exist
         if (vote != "") {
-            alert("You clicked that jawn");
+            alert("You already clicked that jawn");
             $('"' + '.' + voteID + '"').prop("disabled", true);
         //ELSE do the ajax call and set a cookie
         } else {
