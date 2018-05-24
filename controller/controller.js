@@ -2,6 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
+
 // Import the model (post.js) to use its database functions.
 var db = require("../models");
 
@@ -89,6 +90,23 @@ router.get("/postlocal", function (req, res) {
     locationsArr=[];
   });
 });
+// 7) Delete moldy (not recently updated) posts
+// var moment = require('moment');
+// //define cutoff date
+// var rottenBy = moment(moment().subtract(30,'days')).format("YYYY-MM-DD HH:mm:ss");
+// // sequelize format YYYY-MM-DD HH:MM: SS
+// console.log("rotten By Date" +rottenBy)
+
+
+// const Op = Sequelize.Op
+// router.delete("/api/destroyOld", function (req, res) {
+
+  // db.Post.destroy({
+  //   where : {
+  //     updatedAt: {[Op.lt]: rottenBy}
+  //   }
+  // }).then(function (data) {});
+// });
 
 
 // Export routes for server.js to use.
