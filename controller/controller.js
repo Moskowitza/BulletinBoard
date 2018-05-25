@@ -4,7 +4,7 @@ var db = require("../models");
 var router = express.Router();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-var rottenBy = moment(moment().subtract(3, 'days')).format("YYYY-MM-DD HH:mm:ss");
+var rottenBy = moment(moment().subtract(1, 'days')).format("YYYY-MM-DD HH:mm:ss");
 
 // Import the model (post.js) to use its database functions.
 
@@ -12,7 +12,6 @@ var rottenBy = moment(moment().subtract(3, 'days')).format("YYYY-MM-DD HH:mm:ss"
 
 //1) WORKS! GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
-  console.log("rotten By Date" + rottenBy)
   // // sequelize format YYYY-MM-DD HH:MM: SS
   db.Hood.findAll({
   }).then(function (data) {
@@ -24,10 +23,12 @@ router.get("/", function (req, res) {
   db.Post.destroy({
     where: {
       updatedAt: {
-        [Op.lt]: moment(moment().subtract(3, 'days')).format("YYYY-MM-DD HH:mm:ss"),
+        [Op.lt]: rottenBy
       }
-    }.then(function (data) {})
-  })
+    }
+  }).then(function (data) {
+      console.log("rotten By Date" + rottenBy)
+    });
 });
 
 //2) Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
