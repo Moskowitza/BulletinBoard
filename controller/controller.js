@@ -1,4 +1,5 @@
 var express = require("express");
+var moment = require("moment");
 
 var router = express.Router();
 
@@ -10,11 +11,15 @@ var db = require("../models");
 
 //1) WORKS! GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
+
   db.Hood.findAll({
   }).then(function (data) {
     var hbsObject = {
       neighborhoods: data
     };
+    var rottenBy = moment(moment().subtract(30,'days')).format("YYYY-MM-DD HH:mm:ss");
+    // // sequelize format YYYY-MM-DD HH:MM: SS
+    console.log("rotten By Date" +rottenBy)
     res.render("index", hbsObject);
   });
 });
@@ -91,16 +96,13 @@ router.get("/postlocal", function (req, res) {
   });
 });
 // 7) Delete moldy (not recently updated) posts
-// var moment = require('moment');
 // //define cutoff date
-// var rottenBy = moment(moment().subtract(30,'days')).format("YYYY-MM-DD HH:mm:ss");
-// // sequelize format YYYY-MM-DD HH:MM: SS
-// console.log("rotten By Date" +rottenBy)
-
-
-// const Op = Sequelize.Op
-// router.delete("/api/destroyOld", function (req, res) {
-
+// const Op = Sequelize.Op ?
+// router.get("/api/destroyOld", function (req, res) {
+  var rottenBy = moment(moment().subtract(30,'days')).format("YYYY-MM-DD HH:mm:ss");
+  // // sequelize format YYYY-MM-DD HH:MM: SS
+  console.log("rotten By Date" +rottenBy)
+  
   // db.Post.destroy({
   //   where : {
   //     updatedAt: {[Op.lt]: rottenBy}
