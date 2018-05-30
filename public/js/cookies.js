@@ -1,7 +1,7 @@
 // //Create a Cookie that stores if a button is clicked
 // // The button needs to be identified
 // // on a repeat click an error is thrown
-console.log("cookiejs has loaded")
+console.log("cookie.\js has loaded")
 $(document).ready(function (event) {
     $(".upVote").on("click", function () {
         // creae a voteID called : upvoted#
@@ -26,7 +26,7 @@ $(document).ready(function (event) {
         var vote = getCookie(voteID);
         //if Vote cookie DOES exist
         if (vote != "") {
-            alert("You clicked that jawn");
+            alert("You already clicked that jawn");
             $('"' + '.' + voteID + '"').prop("disabled", true);
         //ELSE do the ajax call and set a cookie
         } else {
