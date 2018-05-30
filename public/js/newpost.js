@@ -11,7 +11,8 @@ $(document).ready(function () {
       location: $("#location").val().trim(),
       // rank: $("#rank").val().trim(),
       // $("#neighborhood").val() works!!!! but still need to write to database
-      HoodID: $("#neighborhood").val()
+      // HoodID: $("#neighborhood").val()
+      HoodID: $("#newpost").data("hoodid")
     };
     console.log(newPost)
 
