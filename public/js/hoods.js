@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    $('.modal').modal();
+    $('[data-post=new]').on('click', function() {
+        $('#modal1').modal('open');
+    });
+
     console.log("all posts"+$("#fred").data("posts"))
     console.log($("#map").data("lat"));
     console.log($("#map").data("lng"));
@@ -29,6 +34,8 @@ $(document).ready(function () {
         $(".view-map").removeClass("view-button-active");
     });
 });
+
+
 
 function renderMap(){
     var lat = $("#map").data("lat");

@@ -37,6 +37,8 @@ router.get("/newpost/", function (req, res) {
     var hbsObject = {
       neighborhoods: data
     };
+    // Testing routing for new post modal
+    // res.render("hoods", hbsObject);
     res.render("newpost", hbsObject);
   });
 });
