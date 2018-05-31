@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col s12">
                 {{!-- This is funky but works! --}}
-                <h1> {{#with posts.[0]}} {{!--
-                    <img src="../public/images/{{Hood.slug}}.jpg"> --}} {{Hood.name}} {{/with}}
+                <h1> {{#with posts.[0]}} 
+                    {{!-- <img src="../public/images/{{Hood.slug}}.jpg"> --}}
+                    {{Hood.name}} 
+                    {{/with}}
                 </h1>
             </div>
         </div>
@@ -32,6 +34,7 @@
                 <div id="map" class="hide" data-lat="{{Hood.lat}}" data-lng="{{Hood.lng}}"></div>
                 {{/with}}
             </div>
+
             {{!-- POSTS --}}
             <div id="list">
                 <h1>Posts</h1>
@@ -47,34 +50,8 @@
                         <div class="postLocation" data-location="{{this.location}}"></div>
                         {{/each}}</li>
                 </ul>
+
             </div>
-        </div>
-    </div>
-    </div>
-
-    {{!-- NEW POST MODAL - Could move to a partial for better organization --}}
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            {{#with posts.[0]}}
-            <h2 id="newpost" data-hoodid="{{Hood.id}}" class="center-align">{{Hood.name}} Post</h2>
-            {{/with}}
-            <form active="../api/models/post" method="post">
-                <input id="title" type="text" name="title" placeholder="title">
-                <input id="body" type="text" name="body" placeholder="body">
-                <input id="location" type="text" name="location" placeholder="location"> {{!--
-                <input id="rank" type="text" name="rank" placeholder="rank"> --}} {{!--
-                <div class="input-field">
-                    <select id="neighborhood">
-
-                        <option value="" disabled selected>Select Your Neighborhood</option>
-                        {{#each neighborhoods}}
-                        <option id="hoodID" value="{{this.id}}">{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                </div> --}}
-
-                <button class="btn submitButton" type="submit" name="button">Submit</button>
-            </form>
         </div>
     </div>
 
@@ -86,9 +63,7 @@
             <div class="col s12">
                 <a href="#">GitHub</a>
                 <a href="/">Home</a>
-                <a data-post="new" href="#">New Post</a>
-                {{!--
-                <a href="/newpost/">New Post</a> --}}
+                <a href="/newpost/">New Post</a>
             </div>
         </div>
     </div>
