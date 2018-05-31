@@ -52,36 +52,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    </div>
-
-    {{!-- NEW POST MODAL - Could move to a partial for better organization --}}
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            {{#with posts.[0]}}
-            <h2 id="newpost" data-hoodid="{{Hood.id}}" class="center-align">{{Hood.name}} Post</h2>
-            {{/with}}
-            <form active="../api/models/post" method="post">
-                <input id="title" type="text" name="title" placeholder="title">
-                <input id="body" type="text" name="body" placeholder="body">
-                <input id="location" type="text" name="location" placeholder="location"> 
-                <input id="rank" type="text" name="rank" placeholder="rank"> 
-                <div class="input-field">
-                    <select id="neighborhood">
-
-                        <option value="" disabled selected>Select Your Neighborhood</option>
-                        {{#each neighborhoods}}
-                        <option id="hoodID" value="{{this.id}}">{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                </div> 
-
-                <button class="btn submitButton" type="submit" name="button">Submit</button>
-            </form>
-        </div>
-    </div>
-=======
->>>>>>> 20d8d66af3ba6e7beca5a44de184335f08e03592
 
 </main>
 
