@@ -11,8 +11,14 @@ $(document).ready(function () {
       location: $("#location").val().trim(),
       // rank: $("#rank").val().trim(),
       // $("#neighborhood").val() works!!!! but still need to write to database
-      HoodID: $("#neighborhood").val()
-      // HoodID: $("#newpost").data("hoodid")
+
+
+      // Uncomment below to add new posts from the homepage to populate dummy data for testing.
+      // HoodID: $("#neighborhood").val()
+
+      // Comment out below to add new posts from the homepage to populate dummy data for testing.
+      HoodID: $("#newpost").data("hoodid")
+
     };
     console.log(newPost)
 

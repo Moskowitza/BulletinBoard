@@ -34,21 +34,23 @@
                 <div id="map" class="hide" data-lat="{{Hood.lat}}" data-lng="{{Hood.lng}}"></div>
                 {{/with}}
             </div>
-{{!-- POSTS --}}
-                <div id="list">
-                    <h1>Posts</h1>
-                    {{!-- FORMAT ME!!!--}}
-                    <ul>
-                        <li> {{#each posts}}
-                            <h5>{{this.title}} </h5>
-                            <hr> {{this.body}}
-                            <hr>
-                            <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Helpful</button>
-                            {{this.rank}}
-                            <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Not So Much</button>
-                            {{/each}}</li>
-                    </ul>
-                </div>
+
+            {{!-- POSTS --}}
+            <div id="list">
+                <h1>Posts</h1>
+                {{!-- FORMAT ME!!!--}}
+                <ul>
+                    <li> {{#each posts}}
+                        <h5>{{this.title}} </h5>
+                        <hr> {{this.body}}
+                        <hr>
+                        <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Helpful</button>
+                        {{this.rank}}
+                        <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Not So Much</button>
+                        <div class="postLocation" data-location="{{this.location}}"></div>
+                        {{/each}}</li>
+                </ul>
+
             </div>
         </div>
     </div>
