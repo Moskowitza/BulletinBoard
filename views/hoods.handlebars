@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col s12">
                 {{!-- This is funky but works! --}}
-                <h1> {{#with posts.[0]}} {{!--
-                    <img src="../public/images/{{Hood.slug}}.jpg"> --}} {{Hood.name}} {{/with}}
+                <h1> {{#with posts.[0]}} 
+                    {{!-- <img src="../public/images/{{Hood.slug}}.jpg"> --}}
+                    {{Hood.name}} 
+                    {{/with}}
                 </h1>
             </div>
         </div>
@@ -32,23 +34,25 @@
                 <div id="map" class="hide" data-lat="{{Hood.lat}}" data-lng="{{Hood.lng}}"></div>
                 {{/with}}
             </div>
-            {{!-- POSTS --}}
-            <div id="list">
-                <h1>Posts</h1>
-                {{!-- FORMAT ME!!!--}}
-                <ul>
-                    <li> {{#each posts}}
-                        <h5>{{this.title}} </h5>
-                        <hr> {{this.body}}
-                        <hr>
-                        <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Helpful</button>
-                        {{this.rank}}
-                        <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Not So Much</button>
-                        {{/each}}</li>
-                </ul>
+{{!-- POSTS --}}
+                <div id="list">
+                    <h1>Posts</h1>
+                    {{!-- FORMAT ME!!!--}}
+                    <ul>
+                        <li> {{#each posts}}
+                            <h5>{{this.title}} </h5>
+                            <hr> {{this.body}}
+                            <hr>
+                            <button class="upVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Helpful</button>
+                            {{this.rank}}
+                            <button class="downVote" data-id="{{this.id}}" data-rank="{{this.rank}}">Not So Much</button>
+                            {{/each}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     </div>
 
     {{!-- NEW POST MODAL - Could move to a partial for better organization --}}
@@ -76,6 +80,8 @@
             </form>
         </div>
     </div>
+=======
+>>>>>>> 20d8d66af3ba6e7beca5a44de184335f08e03592
 
 </main>
 
@@ -85,9 +91,7 @@
             <div class="col s12">
                 <a href="#">GitHub</a>
                 <a href="/">Home</a>
-                <a data-post="new" href="#">New Post</a>
-                {{!--
-                <a href="/newpost/">New Post</a> --}}
+                <a href="/newpost/">New Post</a>
             </div>
         </div>
     </div>
