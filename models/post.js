@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,140]
       }
     },
     body: {
@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     location: {
       type: DataTypes.STRING,
       allowNull: true,
-      len: [1]
+      len: [1,140]
     },
     rank: {
       type: DataTypes.INTEGER,
