@@ -1,15 +1,18 @@
 var express = require("express");
-
+var moment = require("moment");
+var db = require("../models");
 var router = express.Router();
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+var rottenBy = moment(moment().subtract(1, 'days')).format("YYYY-MM-DD HH:mm:ss");
 
 // Import the model (post.js) to use its database functions.
-var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 
 //1) WORKS! GET all neighborhoods and load them on the index page
 router.get("/", function (req, res) {
+  // // sequelize format YYYY-MM-DD HH:MM: SS
   db.Hood.findAll({
   }).then(function (data) {
     var hbsObject = {
@@ -17,6 +20,15 @@ router.get("/", function (req, res) {
     };
     res.render("index", hbsObject);
   });
+  db.Post.destroy({
+    where: {
+      updatedAt: {
+        [Op.lt]: rottenBy
+      }
+    }
+  }).then(function (data) {
+      console.log("rotten By Date" + rottenBy)
+    });
 });
 
 //2) Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
@@ -25,6 +37,8 @@ router.get("/newpost/", function (req, res) {
     var hbsObject = {
       neighborhoods: data
     };
+    // Testing routing for new post modal
+    // res.render("hoods", hbsObject);
     res.render("newpost", hbsObject);
   });
 });
@@ -53,11 +67,11 @@ router.get("/hoods/:id", function (req, res) {
     where: { HoodID: req.params.id },
     include: [db.Hood],
     order: [
-      ['rank','DESC'],
-      ['title','ASC'],
+      ['rank', 'DESC'],
+      ['title', 'ASC'],
     ]
   }).then(function (data) {
-    console.log("data from hoods route "+data)
+    console.log("data from hoods route " + data)
     var hbsPosts = {
       posts: data
     }
@@ -70,10 +84,10 @@ router.get("/hoods/:id", function (req, res) {
     db.Post.update({
       rank: req.body.rank
     }, {
-      where: {
-        id: req.params.id
-      }
-      }).then(function(dbPost){
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbPost) {
         res.json(dbPost)
       });
   });
@@ -87,26 +101,10 @@ router.get("/postlocal", function (req, res) {
     };
     res.json(hbsObject);
     console.log(res.json(hbsObject))
-    locationsArr=[];
+    locationsArr = [];
   });
 });
 // 7) Delete moldy (not recently updated) posts
-// var moment = require('moment');
-// //define cutoff date
-// var rottenBy = moment(moment().subtract(30,'days')).format("YYYY-MM-DD HH:mm:ss");
-// // sequelize format YYYY-MM-DD HH:MM: SS
-// console.log("rotten By Date" +rottenBy)
-
-
-// const Op = Sequelize.Op
-// router.delete("/api/destroyOld", function (req, res) {
-
-  // db.Post.destroy({
-  //   where : {
-  //     updatedAt: {[Op.lt]: rottenBy}
-  //   }
-  // }).then(function (data) {});
-// });
 
 
 // Export routes for server.js to use.
