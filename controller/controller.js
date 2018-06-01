@@ -4,7 +4,7 @@ var db = require("../models");
 var router = express.Router();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-var rottenBy = moment(moment().subtract(1, 'days')).format("YYYY-MM-DD HH:mm:ss");
+var rottenBy = moment(moment().subtract(20, 'days')).format("YYYY-MM-DD HH:mm:ss");
 
 // Import the model (post.js) to use its database functions.
 
