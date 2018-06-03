@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $('.modal').modal();
     $('[data-post=new]').on('click', function() {
