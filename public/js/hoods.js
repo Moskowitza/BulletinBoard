@@ -1,16 +1,16 @@
 
 $(document).ready(function () {
     $('.modal').modal();
-    $('[data-post=new]').on('click', function() {
+    $('[data-post=new]').on('click', function () {
         $('#modal1').modal('open');
     });
 
-    console.log("all posts"+$("#fred").data("posts"))
+    console.log("all posts" + $("#fred").data("posts"))
     console.log($("#map").data("lat"));
     console.log($("#map").data("lng"));
     console.log("hoods js loading");
     // When the map button is clicked, show the map for the given neighborhood
-    $(".view-map").on("click", function() {
+    $(".view-map").on("click", function () {
         console.log("map button clicked");
         $("#list").addClass("hide");
         $("#map").removeClass("hide");
@@ -23,55 +23,71 @@ $(document).ready(function () {
     });
 
     // When the list button is clicked, show the list of posts for the given neighborhood
-    $(".view-list").on("click", function() {
+    $(".view-list").on("click", function () {
         console.log("list button clicked");
         $("#map").addClass("hide");
         $("#list").removeClass("hide");
 
         $(".view-list").addClass("view-button-active");
         $(".view-list").removeClass("view-button-inactive");
-        
+
         $(".view-map").addClass("view-button-inactive");
         $(".view-map").removeClass("view-button-active");
     });
+
+
 });
 
-
-
-function renderMap(){
+function renderMap() {
     var lat = $("#map").data("lat");
     var lng = $("#map").data("lng");
-    var location = {lat: lat, lng: lng};
+    var location = { lat: lat, lng: lng };
+    var geocoder = new google.maps.Geocoder()
+
     var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 16, 
+        zoom: 16,
         center: location
     });
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
+    // Hiding Hood Marker
+    // var marker = new google.maps.Marker({
+    //     position: location,
+    //     map: map
+    // });
+
+    // Grab address for each post
+    var postAddresses = $(".postLocation").map(function(){
+        return $(this).data("location");
+    }).get();
+
+    for (var i = 0; i < postAddresses.length; i++) {
+        var address = postAddresses[i];
+        geocodeAddr(geocoder, map, address);
+    }
+
 };
 // DONT DELETE ^^^^^^^^^^^ABOVE
 
+
+
 //THis is stuff we need NOW FOR POSTS
-function geocodeAddr(geocoder, map) {
-    var address = $(".location").data("location");
-    console.log(address)
+function geocodeAddr(geocoder, map, address) {
+    // var address = $(".postLocation").data("location");
+    // console.log(address)
     geocoder.geocode({ "address": address }, function (results, status) {
         if (status === "OK") {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
             var location = { lat: lat, lng: lng }
-
-            map.setCenter(results[0].geometry.location);
+            //This line below centers the map on the LAST post
+            // map.setCenter(results[0].geometry.location);
 
             // Creates marker for geocode address
             var marker = new google.maps.Marker({
                 map: map,
                 position: location
             });
-        } 
-        $(".location").val("");
+        }
+        // $(".location").val("");
     });
 
     // Adds Indego stations as data layer to map
