@@ -25,11 +25,12 @@ $(document).ready(function () {
     $.post("/api/new", newPost)
       .then(function () {
         // console.log("posted?")
-        // $("#title").val("");
-        // $("#body").val("");
-        // $("#location").val("");
+        $("#title").val("");
+        $("#body").val("");
+        $("#location").val("");
         // alert("Thank you for posting!");
-        $("#modal1").close();
+        $('#modal1').modal('close');
+        location.reload();
       });
   });
 });

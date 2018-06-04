@@ -31,17 +31,18 @@ router.get("/", function (req, res) {
     });
 });
 
-//2) Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
-router.get("/newpost/", function (req, res) {
-  db.Hood.findAll({}).then(function (data) {
-    var hbsObject = {
-      neighborhoods: data
-    };
-    // Testing routing for new post modal
-    // res.render("hoods", hbsObject);
-    res.render("newpost", hbsObject);
-  });
-});
+//2) No Longer USED: Swithed to modal: 
+// Go to a NewPost page NO LONGER associated with the neighborhood (use hbs for drop down)
+// router.get("/newpost/", function (req, res) {
+//   db.Hood.findAll({}).then(function (data) {
+//     var hbsObject = {
+//       neighborhoods: data
+//     };
+//     // Testing routing for new post modal
+//     // res.render("hoods", hbsObject);
+//     res.render("newpost", hbsObject);
+//   });
+// });
 
 
 //3) api/new is for adding new to the Post Table 
