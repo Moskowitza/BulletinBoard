@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $('.modal').modal();
     $('[data-post=new]').on('click', function () {
@@ -77,8 +78,8 @@ function geocodeAddr(geocoder, map, address) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
             var location = { lat: lat, lng: lng }
-
-            map.setCenter(results[0].geometry.location);
+            //This line below centers the map on the LAST post
+            // map.setCenter(results[0].geometry.location);
 
             // Creates marker for geocode address
             var marker = new google.maps.Marker({

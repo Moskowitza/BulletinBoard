@@ -9,7 +9,7 @@ $(document).ready(function () {
       title: $("#title").val().trim(),
       body: $("#body").val().trim(),
       location: $("#location").val().trim(),
-      // rank: $("#rank").val().trim(),
+      // rank: We do not take in the 
       // $("#neighborhood").val() works!!!! but still need to write to database
 
 
@@ -21,14 +21,15 @@ $(document).ready(function () {
 
     };
     console.log(newPost)
-
+    // Below is the code that clears the posting
     $.post("/api/new", newPost)
       .then(function () {
-        console.log("posted?")
-        $("#title").val("");
-        $("#body").val("");
-        $("#location").val("");
-        alert("Thank you for posting!");
+        // console.log("posted?")
+        // $("#title").val("");
+        // $("#body").val("");
+        // $("#location").val("");
+        // alert("Thank you for posting!");
+        $("#modal1").close();
       });
   });
 });
