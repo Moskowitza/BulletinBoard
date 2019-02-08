@@ -2,10 +2,6 @@
   "development": {
     "username": "root",
     "password": "mysql2018",
-<<<<<<< HEAD
-=======
-
->>>>>>> 2772208336d9a548ee25886137fea145022b6d1c
     "database": "bulletin",
     "host": "127.0.0.1",
     "dialect": "mysql"
